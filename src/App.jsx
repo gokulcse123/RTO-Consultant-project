@@ -9,6 +9,7 @@ import HeroBanner from './components/modules/HeroBanner';
 import ServicesGrid from './components/modules/ServicesGrid';
 import InsurancePartnersSection from './components/modules/InsurancePartnersSection';
 import BranchesSection from './components/modules/BranchesSection';
+import GoogleReviewsSection from './components/modules/GoogleReviewsSection';
 import WhatsAppFloatingWidget from './components/modules/WhatsAppFloatingWidget';
 import QuickConsultationModal from './components/modules/QuickConsultationModal';
 
@@ -53,6 +54,11 @@ export default function App() {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToReviews = () => {
+    const el = document.getElementById('reviews-section');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 font-sans text-slate-800">
       {/* 1. Top Contact Bar with G. Sathish numbers & WhatsApp */}
@@ -79,6 +85,7 @@ export default function App() {
         onOpenConsultation={() => openConsultWithService('Direct WhatsApp')}
         onOpenBranches={scrollToBranches}
         onScrollToInsurance={scrollToInsurance}
+        onScrollToReviews={scrollToReviews}
       />
 
       {/* 4. Live News Marquee Ticker */}
@@ -111,9 +118,16 @@ export default function App() {
               <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">2 Branches</div>
               <div className="text-xs text-slate-500 font-semibold mt-1">Nanmangalam & Alandur</div>
             </div>
-            <div className="p-3 border-t md:border-t-0 border-l border-slate-200">
-              <div className="text-2xl sm:text-3xl font-extrabold text-tn-blue">4.9 ★</div>
-              <div className="text-xs text-slate-500 font-semibold mt-1">{t('statRating')}</div>
+            <div
+              onClick={scrollToReviews}
+              className="p-3 border-t md:border-t-0 border-l border-slate-200 cursor-pointer hover:bg-slate-50 transition group"
+              title="Click to view Google Reviews"
+            >
+              <div className="text-2xl sm:text-3xl font-extrabold text-tn-blue flex items-center justify-center gap-1 group-hover:scale-105 transition-transform">
+                <span>4.9</span>
+                <span className="text-amber-400">★</span>
+              </div>
+              <div className="text-xs text-slate-500 font-semibold mt-1">185+ {t('statRating')}</div>
             </div>
           </div>
         </div>
@@ -136,6 +150,11 @@ export default function App() {
         {/* Two Chennai Branches from card (Nanmangalam & Alandur) */}
         <BranchesSection
           onOpenConsultation={() => openConsultWithService('Branch Appointment')}
+        />
+
+        {/* Verified Customer Google Reviews (185+ 4.9★) */}
+        <GoogleReviewsSection
+          onOpenConsultation={(svc) => openConsultWithService(svc || 'Google Review Inquiry')}
         />
 
         {/* Feature Spotlight: Fast & Reliable with Lowest Fee */}

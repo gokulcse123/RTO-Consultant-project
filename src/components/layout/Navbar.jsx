@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, FileText, CheckCircle2, Award, CreditCard, MapPin, Shield, MessageCircle, Menu, X } from 'lucide-react';
+import { Home, FileText, CheckCircle2, Award, CreditCard, MapPin, Shield, MessageCircle, Menu, X, Star } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function Navbar({
@@ -11,7 +11,8 @@ export default function Navbar({
   onOpenChallan,
   onOpenConsultation,
   onOpenBranches,
-  onScrollToInsurance
+  onScrollToInsurance,
+  onScrollToReviews
 }) {
   const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,6 +23,7 @@ export default function Navbar({
     { id: 'llr', label: t('navLlrApply'), icon: FileText, action: onOpenLlr, highlight: true },
     { id: 'insurance', label: t('navInsurance'), icon: Shield, action: onScrollToInsurance },
     { id: 'branches', label: t('navBranches'), icon: MapPin, action: onOpenBranches },
+    { id: 'reviews', label: t('navReviews'), icon: Star, action: onScrollToReviews },
     { id: 'status', label: t('navStatus'), icon: CheckCircle2, action: onOpenStatus },
     { id: 'mockTest', label: t('navMockTest'), icon: Award, action: onOpenMockTest },
     { id: 'challan', label: t('navChallan'), icon: CreditCard, action: onOpenChallan },
