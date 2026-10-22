@@ -21,6 +21,7 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
 
   const servicesList = [
     "Vehicle Insurance Quote",
+    "Other State Vehicle NOC & Re-Registration",
     "New LLR (Learner's Licence)",
     "New Driving Licence (DL) / Driving Test",
     "Driving Licence Renewal / Duplicate DL",

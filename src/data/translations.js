@@ -80,6 +80,8 @@ export const translations = {
     serviceHpCancelDesc: "Remove bank loan hypothecation from RC smart card after loan closure with bank NOC.",
     serviceChallanTitle: "Traffic e-Challan Settlement",
     serviceChallanDesc: "Instant verification of traffic police fines and secure settlement without court visits.",
+    serviceOtherStateTitle: "Other State Vehicle NOC & Re-Registration",
+    serviceOtherStateDesc: "End-to-end NOC clearance, road tax payment, re-registration & ownership transfer for vehicles brought from other states (KA, AP, KL, DL, MH, etc.).",
 
     // Branches
     branchesTitle: "Visit Our Chennai Branches",
@@ -191,6 +193,8 @@ export const translations = {
     serviceHpCancelDesc: "வாகனக் கடன் முடிந்ததும் வங்கியின் NOC கொண்டு RC ஸ்மார்ட் கார்டில் HP நீக்கம் செய்தல்.",
     serviceChallanTitle: "போக்குவரத்து e-சலான் தீர்வு",
     serviceChallanDesc: "காவல்துறை போக்குவரத்து அபராதங்களை நீதிமன்றம் செல்லாமல் உடனுக்குடன் ஆன்லைனில் தீர்த்தல்.",
+    serviceOtherStateTitle: "பிற மாநில வாகன NOC & மறுபதிவு",
+    serviceOtherStateDesc: "கர்நாடகா, ஆந்திரா, கேரளா போன்ற பிற மாநில வாகனங்களுக்கான NOC பெறுதல், தமிழ்நாடு மறுபதிவு (TN Re-registration), சாலை வரி செலுத்துதல் & பெயர் மாற்றம்.",
 
     // Branches
     branchesTitle: "எங்கள் சென்னை கிளைகள்",

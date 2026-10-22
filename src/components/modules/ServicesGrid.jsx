@@ -10,7 +10,8 @@ import {
   FileCheck2,
   Users,
   Repeat,
-  Truck
+  Truck,
+  Globe
 } from 'lucide-react';
 import ServiceCard from '../common/ServiceCard';
 import { useLanguage } from '../../context/LanguageContext';
@@ -130,6 +131,18 @@ export default function ServicesGrid({
       accentColor: 'blue',
       actionText: t('actionStartTest'),
       action: onOpenMockTest,
+    },
+    {
+      id: 'otherState',
+      category: 'vehicle',
+      title: t('serviceOtherStateTitle'),
+      desc: t('serviceOtherStateDesc'),
+      icon: Globe,
+      badgeText: 'All States / NOC & Re-Reg',
+      badgeColor: 'blue',
+      accentColor: 'purple',
+      actionText: 'Request Other State NOC',
+      action: () => onOpenConsultation('Other State Vehicle NOC & Re-Registration'),
     },
   ];
 

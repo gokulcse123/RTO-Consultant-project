@@ -71,6 +71,11 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
                   • {t('serviceChallanTitle')}
                 </button>
               </li>
+              <li>
+                <button onClick={onOpenConsultation} className="hover:text-amber-300 hover:underline transition">
+                  • {t('serviceOtherStateTitle')}
+                </button>
+              </li>
             </ul>
           </div>
 

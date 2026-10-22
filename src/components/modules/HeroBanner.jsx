@@ -23,6 +23,7 @@ export default function HeroBanner({
     { name: 'RC Renewal & Fitness Certificate (FC)', nameTa: 'RC புதுப்பித்தல் & FC', action: onOpenConsultation, tag: 'FC' },
     { name: 'Traffic e-Challan Fine Payment', nameTa: 'e-சலான் அபராதம் செலுத்துதல்', action: onOpenChallan, tag: 'Challan' },
     { name: 'LLR Online Practice Mock Test', nameTa: 'LLR ஆன்லைன் மாதிரித் தேர்வு', action: onOpenMockTest, tag: 'Exam' },
+    { name: 'Other State Vehicle NOC & Re-Registration (KA/AP/KL/DL to TN)', nameTa: 'பிற மாநில வாகன NOC & மறுபதிவு', action: onOpenConsultation, tag: 'Other State' },
   ];
 
   const handleSearchChange = (e) => {

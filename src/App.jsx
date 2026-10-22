@@ -124,7 +124,7 @@ export default function App() {
           onOpenStatus={() => setStatusOpen(true)}
           onOpenMockTest={() => setMockTestOpen(true)}
           onOpenChallan={() => setChallanOpen(true)}
-          onOpenConsultation={() => openConsultWithService('RTO Service')}
+          onOpenConsultation={(svc) => openConsultWithService(svc || 'RTO Service')}
           onScrollToInsurance={scrollToInsurance}
         />
 
