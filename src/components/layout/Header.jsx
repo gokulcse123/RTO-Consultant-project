@@ -11,11 +11,12 @@ export default function Header({ onOpenLlr, onOpenConsultation, onOpenBranches }
         {/* Left: NTC Brand Logo & Authority details */}
         <div className="flex items-center gap-2.5 sm:gap-4 min-w-0 flex-1">
           {/* Logo Badge */}
-          <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-rose-600 via-red-600 to-amber-600 text-white shadow-md border-2 border-white ring-2 ring-red-100">
-            <div className="text-center">
-              <span className="text-[11px] sm:text-xs font-black tracking-tighter block leading-none">NTC</span>
-              <span className="text-[9px] sm:text-[10px] font-bold block mt-0.5 opacity-90">RTO</span>
-            </div>
+          <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-white shadow-md border border-slate-200 ring-2 ring-amber-100 overflow-hidden p-1">
+            <img
+              src="/ntc.webp"
+              alt="NTC - Nishi Travels and Consultants"
+              className="w-full h-full object-contain"
+            />
           </div>
 
           <div className="min-w-0 flex-1 leading-tight">

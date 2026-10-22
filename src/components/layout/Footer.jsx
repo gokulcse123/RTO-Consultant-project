@@ -14,8 +14,8 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
           {/* Col 1: Brand & Proprietor */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-red-600 to-amber-600 text-white flex items-center justify-center font-black text-sm shadow-md">
-                NTC
+              <div className="w-11 h-11 rounded-2xl bg-white flex items-center justify-center p-1 shadow-md overflow-hidden border border-slate-700">
+                <img src="/ntc.webp" alt="NTC Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h4 className="text-white font-extrabold text-sm sm:text-base tracking-wide">
