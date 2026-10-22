@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, MessageSquare, Send, CheckCircle2, ShieldCheck, Car, User, FileText, ArrowRight } from 'lucide-react';
 import Modal from '../common/Modal';
 import { useLanguage } from '../../context/LanguageContext';
@@ -10,9 +10,17 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
   const [phone, setPhone] = useState('');
   const [vehicleNo, setVehicleNo] = useState('');
   const [message, setMessage] = useState('');
-  const [preferredBranch, setPreferredBranch] = useState('Nanmangalam');
+  const [preferredBranch, setPreferredBranch] = useState('Nanmangalam (Chrompet Rd)');
+
+  // Sync service whenever preselectedService changes or modal opens
+  useEffect(() => {
+    if (preselectedService) {
+      setService(preselectedService);
+    }
+  }, [preselectedService, isOpen]);
 
   const servicesList = [
+    "Vehicle Insurance Quote",
     "New LLR (Learner's Licence)",
     "New Driving Licence (DL) / Driving Test",
     "Driving Licence Renewal / Duplicate DL",
@@ -21,7 +29,8 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
     "Two-Wheeler / Car Insurance Renewal",
     "Commercial Vehicle Insurance & Permit",
     "Hypothecation (HP) Cancellation",
-    "Traffic e-Challan Payment Support"
+    "Traffic e-Challan Payment Support",
+    "General Inquiry"
   ];
 
   const handleWhatsAppSend = (e) => {
@@ -31,16 +40,24 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
       return;
     }
 
-    const text = `*New Inquiry - NTC RTO & Driving Consultant*%0A%0A` +
-      `*Name:* ${encodeURIComponent(name.trim())}%0A` +
-      `*Phone:* ${encodeURIComponent(phone.trim())}%0A` +
-      `*Service Required:* ${encodeURIComponent(service)}%0A` +
-      (vehicleNo.trim() ? `*Vehicle/App No:* ${encodeURIComponent(vehicleNo.trim())}%0A` : '') +
-      `*Preferred Branch:* ${encodeURIComponent(preferredBranch)}%0A` +
-      (message.trim() ? `*Details:* ${encodeURIComponent(message.trim())}%0A` : '') +
-      `%0A_Sent via NTC Online Portal_`;
+    // Build the complete formatted message
+    const messageLines = [
+      "📌 *NEW INQUIRY / QUOTE REQUEST*",
+      "━━━━━━━━━━━━━━━━━━━",
+      `👤 *Name:* ${name.trim()}`,
+      `📞 *Phone:* ${phone.trim()}`,
+      `📋 *Service:* ${service}`,
+      vehicleNo.trim() ? `🚗 *Vehicle / Reg No:* ${vehicleNo.trim().toUpperCase()}` : null,
+      `📍 *Preferred Branch:* ${preferredBranch}`,
+      message.trim() ? `💬 *Notes / Details:* ${message.trim()}` : null,
+      "━━━━━━━━━━━━━━━━━━━",
+      "🌐 _Sent via NTC Driving & RTO Consultant Portal_"
+    ].filter(Boolean);
 
-    const whatsappUrl = `https://wa.me/917550004226?text=${text}`;
+    const fullMessage = messageLines.join("\n");
+
+    // encodeURIComponent encodes '&', spaces, newlines, and all special chars safely
+    const whatsappUrl = `https://wa.me/917550004226?text=${encodeURIComponent(fullMessage)}`;
     window.open(whatsappUrl, '_blank');
     onClose();
   };
@@ -87,6 +104,9 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
             onChange={(e) => setService(e.target.value)}
             className="w-full px-3 py-2 border rounded-xl border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white font-medium"
           >
+            {!servicesList.includes(service) && service && (
+              <option value={service}>{service}</option>
+            )}
             {servicesList.map((srv, idx) => (
               <option key={idx} value={srv}>{srv}</option>
             ))}
