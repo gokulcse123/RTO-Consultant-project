@@ -98,7 +98,7 @@ export default function App() {
 
         {/* Highlight Stats Bar from card & experience */}
         <div className="bg-white border-b border-slate-200 py-6 px-4 shadow-sm">
-          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 text-center">
             <div className="p-3">
               <div className="text-2xl sm:text-3xl font-extrabold text-red-700">12+ Years</div>
               <div className="text-xs text-slate-500 font-semibold mt-1">{t('statYears')}</div>
@@ -107,11 +107,11 @@ export default function App() {
               <div className="text-2xl sm:text-3xl font-extrabold text-emerald-600">15,000+</div>
               <div className="text-xs text-slate-500 font-semibold mt-1">{t('statClients')}</div>
             </div>
-            <div className="p-3 border-l border-slate-200">
+            <div className="p-3 border-t md:border-t-0 md:border-l border-slate-200">
               <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">2 Branches</div>
               <div className="text-xs text-slate-500 font-semibold mt-1">Nanmangalam & Alandur</div>
             </div>
-            <div className="p-3 border-l border-slate-200">
+            <div className="p-3 border-t md:border-t-0 border-l border-slate-200">
               <div className="text-2xl sm:text-3xl font-extrabold text-tn-blue">4.9 ★</div>
               <div className="text-xs text-slate-500 font-semibold mt-1">{t('statRating')}</div>
             </div>

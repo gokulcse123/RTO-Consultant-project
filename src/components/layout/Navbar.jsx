@@ -70,14 +70,14 @@ export default function Navbar({
           </div>
 
           {/* Mobile hamburger button */}
-          <div className="flex md:hidden items-center justify-between w-full">
-            <span className="text-xs font-bold text-amber-300 flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              NTC RTO & Driving Consultant
+          <div className="flex md:hidden items-center justify-between w-full min-w-0">
+            <span className="text-xs font-bold text-amber-300 flex items-center gap-1.5 min-w-0 truncate pr-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+              <span className="truncate">NTC RTO & Driving Consultant</span>
             </span>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 rounded-lg text-slate-200 hover:bg-slate-800"
+              className="p-2 rounded-lg text-slate-200 hover:bg-slate-800 flex-shrink-0"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

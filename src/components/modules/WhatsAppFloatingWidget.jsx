@@ -9,7 +9,7 @@ export default function WhatsAppFloatingWidget({ onOpenConsultation }) {
   const directWhatsAppLink = "https://wa.me/917550004226?text=Hi%20NTC%20Consultant,%20I%20need%20assistance%20with%20RTO%20Services%20/%20Insurance.";
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end">
       {/* Tooltip Pop */}
       {showTooltip && (
         <div className="relative mb-2 bg-white text-slate-900 border border-slate-200 px-3.5 py-2 rounded-2xl shadow-xl flex items-center gap-2 text-xs max-w-xs animate-bounce">

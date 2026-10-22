@@ -40,32 +40,32 @@ export default function HeroBanner({
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-950 via-tn-navy to-slate-900 text-white overflow-hidden py-14 px-4 border-b border-slate-800">
+    <section className="relative bg-gradient-to-br from-slate-950 via-tn-navy to-slate-900 text-white overflow-hidden py-8 sm:py-14 px-3 sm:px-4 border-b border-slate-800">
       {/* Background ambient lighting */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* Left Column: Heading, CTAs & Search */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6">
             
             {/* Top Badges */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 bg-red-600/20 border border-red-500/40 text-red-300 px-3.5 py-1.5 rounded-full text-xs font-bold backdrop-blur-sm">
+              <span className="inline-flex items-center gap-1.5 bg-red-600/20 border border-red-500/40 text-red-300 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold backdrop-blur-sm">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                 <span>NTC DRIVING & RTO CONSULTANT</span>
               </span>
 
-              <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm">
+              <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>G. Sathish (Proprietor)</span>
               </span>
             </div>
 
             {/* Main Title */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
               {lang === 'ta' ? (
                 <>
                   அனைத்து <span className="text-amber-400">RTO ஆன்லைன் சேவைகள்</span> & குறைந்த கட்டண இன்சூரன்ஸ்
@@ -78,38 +78,40 @@ export default function HeroBanner({
             </h1>
 
             {/* Subtitle */}
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
+            <p className="text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
               {t('heroDesc')}
             </p>
 
             {/* Primary Action Buttons: WhatsApp & Call */}
-            <div className="flex flex-wrap items-center gap-3 pt-1">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
               {/* WhatsApp Direct */}
               <button
                 onClick={onOpenConsultation}
-                className="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm shadow-xl hover:shadow-2xl transition-all transform active:scale-95 flex items-center gap-2.5 border border-emerald-400/30"
+                className="px-5 py-3 sm:px-6 sm:py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm shadow-xl hover:shadow-2xl transition-all transform active:scale-95 flex items-center justify-center gap-2.5 border border-emerald-400/30"
               >
-                <MessageCircle className="w-5 h-5 fill-white" />
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
                 <span>WhatsApp: 75500 04226</span>
               </button>
 
-              {/* Call Direct */}
-              <a
-                href="tel:7550004226"
-                className="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 font-bold text-xs sm:text-sm transition-all flex items-center gap-2"
-              >
-                <Phone className="w-4 h-4 text-amber-400" />
-                <span>Call 75500 04226</span>
-              </a>
+              <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 sm:gap-3">
+                {/* Call Direct */}
+                <a
+                  href="tel:7550004226"
+                  className="px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                  <span>Call 75500 04226</span>
+                </a>
 
-              {/* Apply LLR Online */}
-              <button
-                onClick={onOpenLlr}
-                className="px-5 py-3.5 rounded-2xl bg-gradient-to-r from-tn-blue to-tn-darkBlue hover:opacity-90 text-white font-bold text-xs sm:text-sm transition-all flex items-center gap-2 shadow-md"
-              >
-                <span>{t('btnApplyLlr')}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                {/* Apply LLR Online */}
+                <button
+                  onClick={onOpenLlr}
+                  className="px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-gradient-to-r from-tn-blue to-tn-darkBlue hover:opacity-90 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 shadow-md"
+                >
+                  <span>{t('btnApplyLlr')}</span>
+                  <ArrowRight className="w-4 h-4 flex-shrink-0" />
+                </button>
+              </div>
             </div>
 
             {/* Interactive Search Bar */}
@@ -160,7 +162,7 @@ export default function HeroBanner({
 
           {/* Right Column: Interactive NTC Digital Visiting Card Showcase */}
           <div className="lg:col-span-5">
-            <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-amber-500/40 rounded-3xl p-6 sm:p-7 shadow-2xl text-white space-y-5">
+            <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-amber-500/40 rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-2xl text-white space-y-4 sm:space-y-5">
               
               {/* Card Header */}
               <div className="flex items-start justify-between border-b border-slate-700/80 pb-4">
