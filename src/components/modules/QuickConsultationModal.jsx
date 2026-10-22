@@ -33,6 +33,19 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
     "General Inquiry"
   ];
 
+  const resetForm = () => {
+    setName('');
+    setPhone('');
+    setVehicleNo('');
+    setMessage('');
+    setPreferredBranch('Nanmangalam (Chrompet Rd)');
+  };
+
+  const handleModalClose = () => {
+    resetForm();
+    onClose();
+  };
+
   const handleWhatsAppSend = (e) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) {
@@ -59,13 +72,16 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
     // encodeURIComponent encodes '&', spaces, newlines, and all special chars safely
     const whatsappUrl = `https://wa.me/917550004226?text=${encodeURIComponent(fullMessage)}`;
     window.open(whatsappUrl, '_blank');
+    
+    // Clear all form inputs so next time the user opens Get Quote, it is empty and fresh
+    resetForm();
     onClose();
   };
 
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={handleModalClose}
       title={t('quickConsultTitle')}
       subtitle={t('quickConsultSubtitle')}
       maxWidth="max-w-xl"
