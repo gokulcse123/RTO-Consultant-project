@@ -152,7 +152,7 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <div className="text-center md:text-left">
             <p className="text-slate-400 font-medium">
-              © 2026 {t('brandName')} • {t('proprietor')}
+              © 2026 {t('brandName')} • {t('proprietor')} • <a href="https://ntcautoconsultant.in" className="text-amber-400 font-semibold hover:underline">www.ntcautoconsultant.in</a>
             </p>
             <p className="text-[11px] text-slate-600 mt-0.5">
               {t('disclaimer')}

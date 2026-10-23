@@ -1,9 +1,9 @@
 export const translations = {
   en: {
     // Brand & Header
-    brandName: "NTC DRIVING & RTO CONSULTANT",
+    brandName: "NTC AUTO CONSULTANT",
     brandSubtitle: "All RTO Online Services Done | All Kinds of Motor Insurance",
-    brandTamilName: "NTC ஆன்லைன் சர்வீஸ் சென்டர்",
+    brandTamilName: "NTC ஆட்டோ கன்சல்டன்ட்",
     proprietor: "G. Sathish (Proprietor)",
     proprietorLabel: "Proprietor",
     govAffiliation: "Authorized RTO Facilitation & All Vehicle Insurance",
@@ -115,9 +115,9 @@ export const translations = {
   },
   ta: {
     // Brand & Header
-    brandName: "NTC டிரைவிங் & RTO கன்சல்டன்ட்",
+    brandName: "NTC ஆட்டோ கன்சல்டன்ட்",
     brandSubtitle: "அனைத்து RTO வேலைகளும் ஆன்லைனில் செய்து தரப்படும் | அனைத்து வாகன இன்சூரன்ஸ்",
-    brandTamilName: "NTC ஆன்லைன் சர்வீஸ் சென்டர்",
+    brandTamilName: "NTC ஆட்டோ கன்சல்டன்ட்",
     proprietor: "G. சதீஷ் (உரிமையாளர்)",
     proprietorLabel: "உரிமையாளர்",
     govAffiliation: "அங்கீகரிக்கப்பட்ட RTO பணிகள் & அனைத்து வாகன இன்சூரன்ஸ்",
