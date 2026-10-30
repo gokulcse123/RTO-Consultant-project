@@ -56,7 +56,7 @@ export default function HeroBanner({
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-1.5 bg-red-600/20 border border-red-500/40 text-red-300 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold backdrop-blur-sm">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>NTC DRIVING & RTO CONSULTANT</span>
+                <span>NTC AUTO CONSULTANT</span>
               </span>
 
               <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold backdrop-blur-sm">
@@ -69,11 +69,11 @@ export default function HeroBanner({
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
               {lang === 'ta' ? (
                 <>
-                  அனைத்து <span className="text-amber-400">RTO ஆன்லைன் சேவைகள்</span> & குறைந்த கட்டண இன்சூரன்ஸ்
+                  சென்னையில் <span className="text-amber-400">RTO ஆலோசனை</span> & வாகன இன்சூரன்ஸ்
                 </>
               ) : (
                 <>
-                  All RTO Online Works Done & <span className="text-amber-400">Lowest Cost Insurance</span>
+                  RTO Consultant in Chennai & <span className="text-amber-400">Vehicle Insurance</span>
                 </>
               )}
             </h1>
@@ -82,6 +82,11 @@ export default function HeroBanner({
             <p className="text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
               {t('heroDesc')}
             </p>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm font-semibold text-amber-300">
+              <a href="#services-section" className="hover:underline">{t('navServices')}</a>
+              <a href="#insurance-section" className="hover:underline">{t('navInsurance')}</a>
+              <a href="#branches-section" className="hover:underline">{t('navBranches')}</a>
+            </div>
 
             {/* Primary Action Buttons: WhatsApp & Call */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
@@ -218,16 +223,16 @@ export default function HeroBanner({
                 <div className="flex items-start gap-2">
                   <Building2 className="w-3.5 h-3.5 text-rose-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <span className="font-bold text-white text-[11px]">Branch 1 (Nanmangalam): </span>
-                    <span className="text-slate-400 text-[10px]">Plot 61/2B, Chrompet Road, Nanmangalam, Chennai-129</span>
+                    <span className="font-bold text-white text-[11px]">{t('branch1Title')}: </span>
+                    <span className="text-slate-400 text-[10px]">{t('branch1Address')}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-2">
                   <Building2 className="w-3.5 h-3.5 text-amber-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <span className="font-bold text-white text-[11px]">Branch 2 (Alandur): </span>
-                    <span className="text-slate-400 text-[10px]">Puthu Street, Commercial Complex, Alandur, Chennai-016</span>
+                    <span className="font-bold text-white text-[11px]">{t('branch2Title')}: </span>
+                    <span className="text-slate-400 text-[10px]">{t('branch2Address')}</span>
                   </div>
                 </div>
               </div>

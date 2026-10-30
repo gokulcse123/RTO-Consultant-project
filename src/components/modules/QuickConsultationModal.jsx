@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Phone, MessageSquare, Send, CheckCircle2, ShieldCheck, Car, User, FileText, ArrowRight } from 'lucide-react';
 import Modal from '../common/Modal';
 import { useLanguage } from '../../context/LanguageContext';
+import { ntcBranches } from '../../data/mockData';
 
 export default function QuickConsultationModal({ isOpen, onClose, preselectedService = '' }) {
   const { t, lang } = useLanguage();
@@ -10,7 +11,7 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
   const [phone, setPhone] = useState('');
   const [vehicleNo, setVehicleNo] = useState('');
   const [message, setMessage] = useState('');
-  const [preferredBranch, setPreferredBranch] = useState('Nanmangalam (Chrompet Rd)');
+  const [preferredBranch, setPreferredBranch] = useState(ntcBranches[0].titleEn);
 
   // Sync service whenever preselectedService changes or modal opens
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
     setPhone('');
     setVehicleNo('');
     setMessage('');
-    setPreferredBranch('Nanmangalam (Chrompet Rd)');
+    setPreferredBranch(ntcBranches[0].titleEn);
   };
 
   const handleModalClose = () => {
@@ -185,8 +186,11 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
               onChange={(e) => setPreferredBranch(e.target.value)}
               className="w-full px-3 py-2 border rounded-xl border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white"
             >
-              <option value="Nanmangalam (Chrompet Rd)">Nanmangalam (Chrompet Rd - Head Office)</option>
-              <option value="Alandur (Commercial Complex)">Alandur (Commercial Complex)</option>
+              {ntcBranches.map(branch => (
+                <option key={branch.id} value={branch.titleEn}>
+                  {lang === 'ta' ? branch.titleTa : branch.titleEn}
+                </option>
+              ))}
             </select>
           </div>
         </div>

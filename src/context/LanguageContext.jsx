@@ -8,10 +8,11 @@ export function LanguageProvider({ children }) {
   const [fontScale, setFontScale] = useState(1); // 0.9, 1, 1.1
 
   useEffect(() => {
+    document.documentElement.lang = lang;
     if (lang === 'ta') {
-      document.title = "NTC டிரைவிங் & RTO கன்சல்டன்ட் | G. சதீஷ் - சென்னை";
+      document.title = "NTC ஆட்டோ கன்சல்டன்ட் | சென்னை RTO சேவைகள் & இன்சூரன்ஸ்";
     } else {
-      document.title = "NTC Driving & RTO Consultant | G. Sathish - Chennai";
+      document.title = "NTC Auto Consultant | RTO Services & Insurance in Chennai";
     }
   }, [lang]);
 

@@ -1,5 +1,12 @@
+import { ntcBranches } from './mockData';
+
 export const translations = {
   en: {
+    serviceMockTestTitle: "Free LLR Practice Test",
+    serviceMockTestDesc: "Practise 10 road-sign and traffic-safety questions in English or Tamil, with explanations and a score at the end.",
+    actionApplyNow: "Start Application",
+    actionPayNow: "View Challans",
+    actionStartTest: "Start Practice Test",
     // Brand & Header
     brandName: "NTC AUTO CONSULTANT",
     brandSubtitle: "All RTO Online Services Done | All Kinds of Motor Insurance",
@@ -25,7 +32,7 @@ export const translations = {
       "NTC Consultant: New LLR & Driving Licences processed online without hassle. Call 75500 04226.",
       "Vehicle RC Transfer, Address Change & Hypothecation Cancellation (HP Cancel) done fast.",
       "Instant 2-Wheeler & 4-Wheeler Insurance Renewal with Top Insurers: Digit, Shriram, New India, HDFC ERGO.",
-      "Serving two convenient Chennai branches: Nanmangalam (Chrompet Rd) & Alandur Commercial Complex.",
+      "Head office: Bran Tea, Chromepet Road, Nanmangalam. Sub-branch: Alandur RTO office area. Call for directions.",
       "e-Challan payment & Fitness Certificate (FC) / Permit services done with lowest service charges.",
     ],
 
@@ -44,7 +51,9 @@ export const translations = {
     // Hero
     heroBadge: "Chennai's Trusted RTO & Driving Consultant Since 2012",
     heroTitle: "All RTO Online Works Done & Lowest Cost Insurance",
-    heroDesc: "Expert RTO facilitation by NTC Consultant (G. Sathish). We handle New LLR, Driving Licences, RC Renewal, Ownership Transfer, FC, Road Tax, and Instant Vehicle Insurance with 100% genuine service.",
+    heroDesc: "NTC Auto Consultant, led by G. Sathish, helps with LLR applications, driving licence renewal, RC ownership transfer, vehicle NOC and motor insurance. Visit our Nanmangalam (Chrompet Road) or Alandur branch in Chennai, or contact us on WhatsApp for document guidance and a service quote.",
+    servicesHeading: "LLR, Driving Licence & RC Transfer Services in Chennai",
+    servicesIntro: "Get help with application documents, RC name transfer, RC renewal, fitness certificates and hypothecation cancellation. Our Nanmangalam and Alandur offices assist customers from Chrompet, Pallavaram, Medavakkam and nearby Chennai areas. Contact G. Sathish to discuss your service requirements.",
     btnWhatsAppDirect: "WhatsApp Chat (75500 04226)",
     btnCallNow: "Call 75500 04226",
     btnApplyLlr: "Apply for LLR Online",
@@ -85,18 +94,18 @@ export const translations = {
     serviceOtherStateDesc: "End-to-end NOC clearance, road tax payment, re-registration & ownership transfer for vehicles brought from other states (KA, AP, KL, DL, MH, etc.).",
 
     // Branches
-    branchesTitle: "Visit Our Chennai Branches",
+    branchesTitle: "RTO Consultancy in Nanmangalam & Alandur",
     branchesSubtitle: "Two accessible locations in South Chennai with dedicated parking & doorstep document pickup",
-    branch1Title: "Nanmangalam Branch (Head Office)",
-    branch1Address: "No.B, Plot 61/2B, Chrompet Road, Nanmangalam, Chennai - 600 129",
-    branch1Landmark: "Chrompet to Nanmangalam Main Road",
-    branch2Title: "Alandur Branch (Commercial Complex)",
-    branch2Address: "Puthu Street, Commercial Complex, Alandur, Chennai - 600 016",
-    branch2Landmark: "Near Alandur Metro & GST Road Junction",
+    branch1Title: ntcBranches[0].titleEn,
+    branch1Address: ntcBranches[0].addressEn,
+    branch1Landmark: ntcBranches[0].landmarkEn,
+    branch2Title: ntcBranches[1].titleEn,
+    branch2Address: ntcBranches[1].addressEn,
+    branch2Landmark: ntcBranches[1].landmarkEn,
     branchTimings: "Mon - Sat: 9:30 AM to 8:30 PM | Sunday: 10:00 AM to 2:00 PM",
 
     // Insurance Partners
-    insuranceTitle: "Authorized Insurance Partners",
+    insuranceTitle: "Car, Bike & Commercial Vehicle Insurance in Chennai",
     insuranceSubtitle: "Instant policy issuance, lowest premium quotes, and hassle-free cashless claims assistance",
 
     // WhatsApp Modal
@@ -114,6 +123,11 @@ export const translations = {
     disclaimer: "We are an authorized independent RTO facilitation and multi-brand insurance consultancy aiding citizens with seamless Parivahan Seva digital submissions.",
   },
   ta: {
+    serviceMockTestTitle: "இலவச LLR பயிற்சித் தேர்வு",
+    serviceMockTestDesc: "சாலைச் சின்னங்கள் மற்றும் போக்குவரத்துப் பாதுகாப்பு குறித்த 10 கேள்விகளைத் தமிழ் அல்லது ஆங்கிலத்தில் பயிற்சி செய்யுங்கள். விளக்கங்களுடன் இறுதியில் மதிப்பெண்ணைப் பார்க்கலாம்.",
+    actionApplyNow: "விண்ணப்பத்தைத் தொடங்கு",
+    actionPayNow: "சலான்களைப் பார்க்க",
+    actionStartTest: "பயிற்சித் தேர்வைத் தொடங்கு",
     // Brand & Header
     brandName: "NTC ஆட்டோ கன்சல்டன்ட்",
     brandSubtitle: "அனைத்து RTO வேலைகளும் ஆன்லைனில் செய்து தரப்படும் | அனைத்து வாகன இன்சூரன்ஸ்",
@@ -139,7 +153,7 @@ export const translations = {
       "NTC கன்சல்டன்ட்: புதிய LLR & ஓட்டுநர் உரிமம் நேரில் அலையாமல் விரைவாகப் பெறலாம். தொடர்பு: 75500 04226.",
       "வாகன RC பெயர் மாற்றம் (உரிமையாளர் மாற்றம்), முகவரி மாற்றம் & வங்கி HP கேன்சல் செய்து தரப்படும்.",
       "இருசக்கர மற்றும் நான்கு சக்கர வாகனங்களுக்கான இன்சூரன்ஸ் உடனடி பாலிசி: Digit, Shriram, New India, HDFC ERGO.",
-      "நன்மங்கலம் (குரோம்பேட்டை ரோடு) மற்றும் ஆலந்தூர் வணிக வளாகம் ஆகிய இரண்டு கிளைகளிலும் சேவை உண்டு.",
+      "தலைமை அலுவலகம்: Bran Tea, குரோம்பேட்டை சாலை, நன்மங்கலம். துணைக் கிளை: ஆலந்தூர் RTO அலுவலகப் பகுதி. வழியறிய அழைக்கவும்.",
       "போக்குவரத்து e-சலான் அபராதம் செலுத்துதல், வாகன தகுதிச் சான்றிதழ் (FC) & பெர்மிட் மிகக் குறைந்த கட்டணத்தில்.",
     ],
 
@@ -158,7 +172,9 @@ export const translations = {
     // Hero
     heroBadge: "சென்னையில் 12+ ஆண்டுகளாக நம்பகமான RTO & டிரைவிங் கன்சல்டன்ட்",
     heroTitle: "அனைத்து RTO ஆன்லைன் சேவைகள் & குறைந்த கட்டண இன்சூரன்ஸ்",
-    heroDesc: "G. சதீஷ் (உரிமையாளர்) அவர்களின் NTC கன்சல்டன்ட் மூலம் புதிய LLR, ஓட்டுநர் உரிமம் (DL), RC பெயர் மாற்றம், முகவரி மாற்றம், FC புதுப்பித்தல் மற்றும் அனைத்து வாகன இன்சூரன்ஸ் சேவைகளும் நம்பகமாக செய்து தரப்படும்.",
+    heroDesc: "G. சதீஷ் அவர்களின் NTC ஆட்டோ கன்சல்டன்ட் மூலம் LLR விண்ணப்பம், ஓட்டுநர் உரிமம் புதுப்பித்தல், RC பெயர் மாற்றம், வாகன NOC மற்றும் இன்சூரன்ஸ் சேவைகளுக்கான உதவியைப் பெறுங்கள். சென்னை நன்மங்கலம் (குரோம்பேட்டை சாலை) அல்லது ஆலந்தூர் கிளையை அணுகவும். ஆவண வழிகாட்டுதல் மற்றும் சேவைக் கட்டண விவரங்களுக்கு வாட்ஸ்அப்பில் தொடர்புகொள்ளவும்.",
+    servicesHeading: "சென்னையில் LLR, ஓட்டுநர் உரிமம் & RC பெயர் மாற்ற சேவைகள்",
+    servicesIntro: "விண்ணப்ப ஆவணங்கள், RC பெயர் மாற்றம், RC புதுப்பித்தல், தகுதிச் சான்றிதழ் மற்றும் வங்கிக் கடன் பதிவு நீக்கத்திற்கான உதவியைப் பெறுங்கள். நன்மங்கலம் மற்றும் ஆலந்தூர் கிளைகள் மூலம் குரோம்பேட்டை, பல்லாவரம், மேடவாக்கம் மற்றும் அருகிலுள்ள சென்னை பகுதிகளுக்கு சேவை வழங்குகிறோம். உங்கள் தேவைகளை விவாதிக்க G. சதீஷைத் தொடர்புகொள்ளவும்.",
     btnWhatsAppDirect: "வாட்ஸ்அப் சாட் (75500 04226)",
     btnCallNow: "அழைக்க: 75500 04226",
     btnApplyLlr: "ஆன்லைன் LLR விண்ணப்பம்",
@@ -199,18 +215,18 @@ export const translations = {
     serviceOtherStateDesc: "கர்நாடகா, ஆந்திரா, கேரளா போன்ற பிற மாநில வாகனங்களுக்கான NOC பெறுதல், தமிழ்நாடு மறுபதிவு (TN Re-registration), சாலை வரி செலுத்துதல் & பெயர் மாற்றம்.",
 
     // Branches
-    branchesTitle: "எங்கள் சென்னை கிளைகள்",
+    branchesTitle: "நன்மங்கலம் & ஆலந்தூரில் RTO ஆலோசனை",
     branchesSubtitle: "தென்சென்னையில் உங்களை வரவேற்கும் இரண்டு முக்கிய கிளைகள் & ஆவணங்களை வீட்டிற்கே வந்து பெறும் வசதி",
-    branch1Title: "நன்மங்கலம் கிளை (தலைமை அலுவலகம்)",
-    branch1Address: "எண். B, பிளாட் 61/2B, குரோம்பேட்டை ரோடு, நன்மங்கலம், சென்னை - 600 129",
-    branch1Landmark: "குரோம்பேட்டை - நன்மங்கலம் பிரதான சாலை",
-    branch2Title: "ஆலந்தூர் கிளை (வணிக வளாகம்)",
-    branch2Address: "புது தெரு, கமர்சியல் காம்ப்ளக்ஸ், ஆலந்தூர், சென்னை - 600 016",
-    branch2Landmark: "ஆலந்தூர் மெட்ரோ மற்றும் ஜிஎஸ்டி ரோடு சந்திப்பு அருகில்",
+    branch1Title: ntcBranches[0].titleTa,
+    branch1Address: ntcBranches[0].addressTa,
+    branch1Landmark: ntcBranches[0].landmarkTa,
+    branch2Title: ntcBranches[1].titleTa,
+    branch2Address: ntcBranches[1].addressTa,
+    branch2Landmark: ntcBranches[1].landmarkTa,
     branchTimings: "திங்கள் - சனி: காலை 9:30 முதல் இரவு 8:30 வரை | ஞாயிறு: காலை 10:00 முதல் மதியம் 2:00 வரை",
 
     // Insurance Partners
-    insuranceTitle: "அங்கீகரிக்கப்பட்ட இன்சூரன்ஸ் நிறுவனங்கள்",
+    insuranceTitle: "சென்னையில் கார், பைக் & வணிக வாகன இன்சூரன்ஸ்",
     insuranceSubtitle: "உடனடி பாலிசி, குறைந்த பிரீமியம் மற்றும் விபத்துக் காலங்களில் பணமில்லா க்ளைம் (Cashless Claims)",
 
     // WhatsApp Modal

@@ -30,6 +30,7 @@ export default function BranchesSection({ onOpenConsultation }) {
           return (
             <div
               key={branch.id}
+              id={`branch-${branch.id}`}
               className={`relative bg-white rounded-3xl p-6 sm:p-7 border transition-all duration-300 shadow-sm hover:shadow-xl ${
                 branch.isHeadOffice
                   ? 'border-tn-blue/40 ring-1 ring-tn-blue/20'
@@ -62,6 +63,13 @@ export default function BranchesSection({ onOpenConsultation }) {
                   <MapPin className="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5" />
                   <span className="font-medium leading-relaxed">{address}</span>
                 </div>
+                {!branch.mapQuery && (
+                  <p className="text-slate-600 leading-relaxed">
+                    {lang === 'ta'
+                      ? 'துணைக் கிளைக்கான சரியான வழியறிய வருவதற்கு முன் அழைக்கவும்.'
+                      : 'Please call before visiting for directions to the sub-branch.'}
+                  </p>
+                )}
 
                 <div className="flex items-center gap-2.5 text-slate-500 pt-1 border-t border-slate-200/60">
                   <Clock className="w-3.5 h-3.5 text-slate-400" />
@@ -102,12 +110,16 @@ export default function BranchesSection({ onOpenConsultation }) {
                   Doorstep Document Collection Available
                 </span>
                 <a
-                  href={`https://maps.google.com/?q=${branch.mapQuery}`}
+                  href={branch.mapQuery
+                    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branch.mapQuery)}`
+                    : `tel:${branch.phone1.replace(/\s+/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-tn-blue font-bold hover:underline flex items-center gap-1"
                 >
-                  <span>Open in Maps</span>
+                  <span>{branch.mapQuery
+                    ? (lang === 'ta' ? 'வரைபடத்தில் பார்க்க' : 'Open in Maps')
+                    : (lang === 'ta' ? 'வழியறிய அழைக்கவும்' : 'Call for Directions')}</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>

@@ -14,7 +14,9 @@ export default function Header({ onOpenLlr, onOpenConsultation, onOpenBranches }
           <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-white shadow-md border border-slate-200 ring-2 ring-amber-100 overflow-hidden p-1">
             <img
               src="/ntc.webp"
-              alt="NTC - Nishi Travels and Consultants"
+              alt="NTC Auto Consultant logo"
+              width="64"
+              height="64"
               className="w-full h-full object-contain"
             />
           </div>
@@ -31,12 +33,12 @@ export default function Header({ onOpenLlr, onOpenConsultation, onOpenBranches }
             </div>
 
             {/* Main Brand Title */}
-            <h1 className="text-xs sm:text-lg md:text-2xl font-black text-slate-900 tracking-tight mt-0.5 sm:mt-1 flex items-center gap-1.5 leading-snug">
+            <p className="text-xs sm:text-lg md:text-2xl font-black text-slate-900 tracking-tight mt-0.5 sm:mt-1 flex items-center gap-1.5 leading-snug">
               <span className="truncate">{lang === 'ta' ? t('brandTamilName') : t('brandName')}</span>
               <span className="hidden lg:inline text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 flex-shrink-0">
                 Verified
               </span>
-            </h1>
+            </p>
 
             {/* Subtitle / Branches indication */}
             <p className="text-xs text-slate-500 font-medium hidden sm:flex items-center gap-2 mt-0.5 truncate">

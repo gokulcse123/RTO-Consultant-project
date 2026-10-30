@@ -159,10 +159,10 @@ export default function ServicesGrid({
             NTC Online Service Portfolio
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
-            {t('navServices')} & Facilitation
+            {t('servicesHeading')}
           </h2>
           <p className="text-sm text-slate-600 mt-1 max-w-xl">
-            Complete doorstep and online RTO processing by <strong>G. Sathish (Proprietor)</strong>. Lowest service fees with guaranteed genuine work.
+            {t('servicesIntro')}
           </p>
         </div>
 

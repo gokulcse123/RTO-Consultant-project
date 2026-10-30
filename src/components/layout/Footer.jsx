@@ -89,10 +89,10 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
             <div className="text-xs space-y-1">
               <div className="font-bold text-slate-200 flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />
-                <span>Nanmangalam (Head Office)</span>
+                <span>{t('branch1Title')}</span>
               </div>
               <p className="text-slate-400 pl-5 text-[11px] leading-relaxed">
-                No.B, Plot 61/2B, Chrompet Road, Nanmangalam, Chennai - 600 129
+                {t('branch1Address')}
               </p>
             </div>
 
@@ -100,10 +100,10 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
             <div className="text-xs space-y-1 pt-1 border-t border-slate-800">
               <div className="font-bold text-slate-200 flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
-                <span>Alandur Branch</span>
+                <span>{t('branch2Title')}</span>
               </div>
               <p className="text-slate-400 pl-5 text-[11px] leading-relaxed">
-                Puthu Street, Commercial Complex, Alandur, Chennai - 600 016
+                {t('branch2Address')}
               </p>
             </div>
           </div>
@@ -160,9 +160,9 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-slate-400">
-            <span>Chrompet Rd, Nanmangalam</span>
+            <span>Bran Tea, Nanmangalam</span>
             <span>•</span>
-            <span>Commercial Complex, Alandur</span>
+            <span>Alandur RTO Office Area</span>
           </div>
         </div>
       </div>

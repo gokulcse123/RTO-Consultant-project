@@ -1,11 +1,96 @@
-import React, { useState } from 'react';
-import { Star, CheckCircle, ExternalLink, MessageCircle, Phone, ThumbsUp, ShieldCheck } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Star, CheckCircle, ExternalLink, MessageCircle, Phone, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
 import { googleReviews } from '../../data/mockData';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function GoogleReviewsSection({ onOpenConsultation }) {
-  const { t, lang } = useLanguage();
+  const { lang } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
+  const reviewsRef = useRef(null);
+  const autoScrollPause = useRef({ hovered: false, focused: false, touching: false, until: 0 });
+  const [scrollState, setScrollState] = useState({ previous: false, next: false });
+
+  useEffect(() => {
+    const track = reviewsRef.current;
+    track.scrollTo({ left: 0, behavior: 'instant' });
+
+    const updateScrollState = () => {
+      const nextState = {
+        previous: track.scrollLeft > 1,
+        next: track.scrollLeft + track.clientWidth < track.scrollWidth - 1,
+      };
+      setScrollState(previous =>
+        previous.previous === nextState.previous && previous.next === nextState.next
+          ? previous
+          : nextState
+      );
+    };
+
+    updateScrollState();
+    track.addEventListener('scroll', updateScrollState, { passive: true });
+    const observer = new ResizeObserver(updateScrollState);
+    observer.observe(track);
+
+    return () => {
+      track.removeEventListener('scroll', updateScrollState);
+      observer.disconnect();
+    };
+  }, [activeFilter, lang]);
+
+  useEffect(() => {
+    const track = reviewsRef.current;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frameId;
+    let lastTime = null;
+    let distance = 0;
+    let direction = 1;
+
+    const animate = (time) => {
+      const elapsed = lastTime === null ? 0 : Math.min(time - lastTime, 50);
+      lastTime = time;
+      const pause = autoScrollPause.current;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+
+      if (!reducedMotion.matches && !document.hidden && !pause.hovered &&
+          !pause.focused && !pause.touching && time >= pause.until && maxScroll > 1) {
+        // Move slowly in both directions so every review remains reachable.
+        if (track.scrollLeft >= maxScroll - 1) direction = -1;
+        else if (track.scrollLeft <= 0) direction = 1;
+
+        // Accumulate fractional pixels for consistent speed across refresh rates.
+        distance += elapsed * 24 / 1000;
+        const pixels = Math.floor(distance);
+        if (pixels > 0) {
+          track.scrollBy({ left: direction * pixels, behavior: 'instant' });
+          distance -= pixels;
+        }
+      } else {
+        distance = 0;
+      }
+
+      frameId = window.requestAnimationFrame(animate);
+    };
+
+    frameId = window.requestAnimationFrame(animate);
+    return () => window.cancelAnimationFrame(frameId);
+  }, [activeFilter, lang]);
+
+  const pauseAfterInteraction = () => {
+    autoScrollPause.current.until = performance.now() + 2500;
+  };
+
+  const scrollReviews = (direction) => {
+    const track = reviewsRef.current;
+    const card = track.firstElementChild;
+    if (!card) return;
+
+    pauseAfterInteraction();
+    const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+    track.scrollBy({
+      left: direction * (card.getBoundingClientRect().width + gap),
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+    });
+  };
 
   const filters = [
     { id: 'all', labelEn: 'All Reviews (185+)', labelTa: 'அனைத்து மதிப்புரைகள் (185+)' },
@@ -120,15 +205,75 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
           ))}
         </div>
 
-        {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Horizontal review navigation */}
+        <div className="flex items-center justify-between gap-4 mb-3">
+          <p className="text-xs text-slate-500">
+            {lang === 'ta' ? 'மதிப்புரைகள் தானாக நகரும் • படிக்க மவுஸ் கர்சரை மேலே வைக்கவும்' : 'Reviews scroll automatically • Hover to pause and read'}
+          </p>
+          <div className="flex gap-2 flex-shrink-0">
+            <button
+              type="button"
+              onClick={() => scrollReviews(-1)}
+              disabled={!scrollState.previous}
+              aria-label={lang === 'ta' ? 'முந்தைய மதிப்புரைகள்' : 'Previous reviews'}
+              aria-controls="reviews-track"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollReviews(1)}
+              disabled={!scrollState.next}
+              aria-label={lang === 'ta' ? 'அடுத்த மதிப்புரைகள்' : 'Next reviews'}
+              aria-controls="reviews-track"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* Continuous slow scrolling; pause while reading or interacting. */}
+        <div
+          id="reviews-track"
+          ref={reviewsRef}
+          role="region"
+          aria-label={lang === 'ta' ? 'வாடிக்கையாளர் மதிப்புரைகள்' : 'Customer reviews'}
+          tabIndex={0}
+          onPointerEnter={(event) => {
+            if (event.pointerType !== 'touch') autoScrollPause.current.hovered = true;
+          }}
+          onPointerLeave={() => { autoScrollPause.current.hovered = false; }}
+          onPointerDown={(event) => {
+            if (event.pointerType === 'touch') autoScrollPause.current.touching = true;
+            pauseAfterInteraction();
+          }}
+          onPointerUp={() => {
+            autoScrollPause.current.touching = false;
+            pauseAfterInteraction();
+          }}
+          onPointerCancel={() => {
+            autoScrollPause.current.touching = false;
+            pauseAfterInteraction();
+          }}
+          onFocus={(event) => {
+            autoScrollPause.current.focused = event.target.matches(':focus-visible');
+          }}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) autoScrollPause.current.focused = false;
+          }}
+          onWheel={pauseAfterInteraction}
+          onKeyDown={pauseAfterInteraction}
+          className="flex gap-5 overflow-x-auto overscroll-x-contain pt-2 pb-5 px-1 -mx-1 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+        >
           {filteredReviews.map((rev) => (
             <a
               key={rev.id}
               href={googleMapsReviewUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:border-blue-400 block"
+              className="w-[90%] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)] flex-shrink-0 bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:border-blue-400"
               title={lang === 'ta' ? 'கூகுளில் இந்த மதிப்புரையைப் பார்க்க கிளிக் செய்யவும்' : 'Click to view on Google Maps'}
             >
               <div>
@@ -155,7 +300,7 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
                 </div>
 
                 {/* Rating & Verified row */}
-                <div className="mt-3 flex items-center justify-between">
+                <div className="mt-3 flex flex-wrap gap-2 items-center justify-between">
                   <div className="flex items-center text-amber-400 gap-0.5">
                     {[...Array(rev.rating)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -176,7 +321,7 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
               </div>
 
               {/* Tag & Direct Google Link */}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between text-xs">
                 <span className="text-[10px] font-bold text-tn-blue bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-100">
                   {rev.serviceTag}
                 </span>
