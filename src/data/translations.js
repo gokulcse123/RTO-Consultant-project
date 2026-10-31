@@ -44,10 +44,10 @@ export const translations = {
 
     // Helplines & Direct Contacts
     phone1: "75500 04226",
-    phone2: "90878 74290",
+    phone2: "98409 14226",
     phone1Formatted: "+91 75500 04226",
-    phone2Formatted: "+91 90878 74290",
-    callUs: "Call: 75500 04226 / WhatsApp: 90878 74290",
+    phone2Formatted: "+91 98409 14226",
+    callUs: "Call: 75500 04226 / WhatsApp: 98409 14226",
     chatWhatsApp: "Chat on WhatsApp",
     languageToggle: "தமிழ்",
     fontSize: "Font Size",
@@ -80,7 +80,7 @@ export const translations = {
     heroDesc: "NTC Auto Consultant, led by G. Sathish, helps with LLR applications, driving licence renewal, RC ownership transfer, vehicle NOC and motor insurance. Visit our Nanmangalam (Chrompet Road) or Alandur branch in Chennai, or contact us on WhatsApp for document guidance and a service quote.",
     servicesHeading: "LLR, Driving Licence & RC Transfer Services in Chennai",
     servicesIntro: "Get help with application documents, RC name transfer, RC renewal, fitness certificates and hypothecation cancellation. Our Nanmangalam and Alandur offices assist customers from Chrompet, Pallavaram, Medavakkam and nearby Chennai areas. Contact G. Sathish to discuss your service requirements.",
-    btnWhatsAppDirect: "WhatsApp Chat (90878 74290)",
+    btnWhatsAppDirect: "WhatsApp Chat (98409 14226)",
     btnCallNow: "Call 75500 04226",
     btnApplyLlr: "Apply for LLR Online",
     btnQuickQuote: "Get Free Quote",
@@ -136,13 +136,13 @@ export const translations = {
 
     // WhatsApp Modal
     quickConsultTitle: "Instant WhatsApp Consultation",
-    quickConsultSubtitle: "Direct connect with G. Sathish (Proprietor) on WhatsApp +91 90878 74290",
+    quickConsultSubtitle: "Direct connect with G. Sathish (Proprietor) on WhatsApp +91 98409 14226",
     selectService: "Select Service Needed",
     yourName: "Your Full Name",
     yourPhone: "Your WhatsApp Phone Number",
     yourVehicleNo: "Vehicle / Application No. (Optional)",
     yourMessage: "Your Message or Query",
-    sendWhatsAppBtn: "Send Message to WhatsApp (+91 90878 74290)",
+    sendWhatsAppBtn: "Send Message to WhatsApp (+91 98409 14226)",
 
     // Footer
     portalMaintainedBy: "NTC Driving & RTO Consultant — Managed by G. Sathish (Proprietor).",
@@ -191,10 +191,10 @@ export const translations = {
 
     // Helplines & Direct Contacts
     phone1: "75500 04226",
-    phone2: "90878 74290",
+    phone2: "98409 14226",
     phone1Formatted: "+91 75500 04226",
-    phone2Formatted: "+91 90878 74290",
-    callUs: "அழைக்க: 75500 04226 / வாட்ஸ்அப்: 90878 74290",
+    phone2Formatted: "+91 98409 14226",
+    callUs: "அழைக்க: 75500 04226 / வாட்ஸ்அப்: 98409 14226",
     chatWhatsApp: "வாட்ஸ்அப் மூலம் தொடர்புகொள்ள",
     languageToggle: "English",
     fontSize: "எழுத்து அளவு",
@@ -227,7 +227,7 @@ export const translations = {
     heroDesc: "G. சதீஷ் அவர்களின் NTC ஆட்டோ கன்சல்டன்ட் மூலம் LLR விண்ணப்பம், ஓட்டுநர் உரிமம் புதுப்பித்தல், RC பெயர் மாற்றம், வாகன NOC மற்றும் இன்சூரன்ஸ் சேவைகளுக்கான உதவியைப் பெறுங்கள். சென்னை நன்மங்கலம் (குரோம்பேட்டை சாலை) அல்லது ஆலந்தூர் கிளையை அணுகவும். ஆவண வழிகாட்டுதல் மற்றும் சேவைக் கட்டண விவரங்களுக்கு வாட்ஸ்அப்பில் தொடர்புகொள்ளவும்.",
     servicesHeading: "சென்னையில் LLR, ஓட்டுநர் உரிமம் & RC பெயர் மாற்ற சேவைகள்",
     servicesIntro: "விண்ணப்ப ஆவணங்கள், RC பெயர் மாற்றம், RC புதுப்பித்தல், தகுதிச் சான்றிதழ் மற்றும் வங்கிக் கடன் பதிவு நீக்கத்திற்கான உதவியைப் பெறுங்கள். நன்மங்கலம் மற்றும் ஆலந்தூர் கிளைகள் மூலம் குரோம்பேட்டை, பல்லாவரம், மேடவாக்கம் மற்றும் அருகிலுள்ள சென்னை பகுதிகளுக்கு சேவை வழங்குகிறோம். உங்கள் தேவைகளை விவாதிக்க G. சதீஷைத் தொடர்புகொள்ளவும்.",
-    btnWhatsAppDirect: "வாட்ஸ்அப் சாட் (90878 74290)",
+    btnWhatsAppDirect: "வாட்ஸ்அப் சாட் (98409 14226)",
     btnCallNow: "அழைக்க: 75500 04226",
     btnApplyLlr: "ஆன்லைன் LLR விண்ணப்பம்",
     btnQuickQuote: "கட்டண விவரம் அறிய",
@@ -283,13 +283,13 @@ export const translations = {
 
     // WhatsApp Modal
     quickConsultTitle: "உடனடி வாட்ஸ்அப் ஆலோசனை",
-    quickConsultSubtitle: "உரிமையாளர் G. சதீஷ் அவர்களை வாட்ஸ்அப்பில் நேரடியாக தொடர்பு கொள்ள (+91 90878 74290)",
+    quickConsultSubtitle: "உரிமையாளர் G. சதீஷ் அவர்களை வாட்ஸ்அப்பில் நேரடியாக தொடர்பு கொள்ள (+91 98409 14226)",
     selectService: "தேவையான சேவையைத் தேர்ந்தெடுக்கவும்",
     yourName: "உங்கள் முழுப் பெயர்",
     yourPhone: "உங்கள் வாட்ஸ்அப் எண்",
     yourVehicleNo: "வாகன எண் / விண்ணப்ப எண் (விருப்பத்தேர்வு)",
     yourMessage: "உங்கள் கேள்வி அல்லது தகவல்",
-    sendWhatsAppBtn: "வாட்ஸ்அப்பில் செய்தி அனுப்ப (+91 90878 74290)",
+    sendWhatsAppBtn: "வாட்ஸ்அப்பில் செய்தி அனுப்ப (+91 98409 14226)",
 
     // Footer
     portalMaintainedBy: "NTC டிரைவிங் & RTO கன்சல்டன்ட் — G. சதீஷ் (உரிமையாளர்).",

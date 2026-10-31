@@ -98,7 +98,7 @@ export default function HeroBanner({
                 className="px-5 py-3 sm:px-6 sm:py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm shadow-xl hover:shadow-2xl transition-all transform active:scale-95 flex items-center justify-center gap-2.5 border border-emerald-400/30"
               >
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
-                <span>WhatsApp: 90878 74290</span>
+                <span>WhatsApp: 98409 14226</span>
               </button>
 
               <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 sm:gap-3">

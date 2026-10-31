@@ -139,7 +139,7 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
                 <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <div>
                   <div className="text-[10px] text-slate-400">WhatsApp Business</div>
-                  <div className="font-bold text-white font-mono text-sm">90878 74290</div>
+                  <div className="font-bold text-white font-mono text-sm">98409 14226</div>
                 </div>
               </button>
 

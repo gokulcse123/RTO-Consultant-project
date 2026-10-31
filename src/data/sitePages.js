@@ -112,7 +112,7 @@ export const servicePages = [
     description: 'Contact G. Sathish at NTC Auto Consultant for LLR, driving licence, RC transfer or motor insurance enquiries. Call 75500 04226 or request a WhatsApp consultation.',
     label: text('Contact Us', 'தொடர்புகொள்ள'),
     heading: text('Contact NTC Auto Consultant', 'NTC ஆட்டோ கன்சல்டன்டைத் தொடர்புகொள்ள'),
-    intro: text('Speak to G. Sathish, Proprietor, about RTO documentation or vehicle insurance assistance in Chennai. Call 75500 04226 or message our WhatsApp Business number 90878 74290. Use the WhatsApp consultation form to describe your enquiry and preferred branch.', 'சென்னையில் RTO ஆவணங்கள் அல்லது வாகன இன்சூரன்ஸ் உதவிக்கு உரிமையாளர் G. சதீஷைத் தொடர்புகொள்ளவும். அழைக்க: 75500 04226. WhatsApp Business: 90878 74290. WhatsApp ஆலோசனைப் படிவத்தில் உங்கள் தேவை மற்றும் விருப்பமான கிளையைத் தெரிவிக்கலாம்.'),
+    intro: text('Speak to G. Sathish, Proprietor, about RTO documentation or vehicle insurance assistance in Chennai. Call 75500 04226 or message our WhatsApp Business number 98409 14226. Use the WhatsApp consultation form to describe your enquiry and preferred branch.', 'சென்னையில் RTO ஆவணங்கள் அல்லது வாகன இன்சூரன்ஸ் உதவிக்கு உரிமையாளர் G. சதீஷைத் தொடர்புகொள்ளவும். அழைக்க: 75500 04226. WhatsApp Business: 98409 14226. WhatsApp ஆலோசனைப் படிவத்தில் உங்கள் தேவை மற்றும் விருப்பமான கிளையைத் தெரிவிக்கலாம்.'),
     sections: [
       {
         heading: text('What would you like help with?', 'எந்தச் சேவைக்கு உதவி தேவை?'),

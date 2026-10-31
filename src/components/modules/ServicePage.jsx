@@ -49,7 +49,7 @@ export default function ServicePage({ page, onOpenConsultation }) {
             <h2 className="text-lg font-bold text-slate-900">{lang === 'ta' ? 'எங்கள் கிளைகளில் ஆலோசனை' : 'Talk to our Chennai team'}</h2>
             <p className="text-sm text-slate-600">G. Sathish · {lang === 'ta' ? 'உரிமையாளர்' : 'Proprietor'}</p>
             <a href="tel:7550004226" className="block font-bold text-tn-blue hover:underline">75500 04226</a>
-            {page.kind === 'contact' && <button type="button" onClick={onOpenConsultation} className="block text-left font-bold text-emerald-700 hover:underline">WhatsApp: 90878 74290</button>}
+            {page.kind === 'contact' && <button type="button" onClick={onOpenConsultation} className="block text-left font-bold text-emerald-700 hover:underline">WhatsApp: 98409 14226</button>}
             <p className="text-sm text-slate-600 leading-relaxed">{lang === 'ta' ? 'நன்மங்கலம் தலைமை அலுவலகம் & ஆலந்தூர் துணைக் கிளை' : 'Nanmangalam head office & Alandur sub-branch'}</p>
             <a href={page.kind === 'branches' ? '#branches-section' : '/branches/'} className="inline-flex items-center gap-2 text-sm font-semibold text-tn-blue hover:underline">
               <MapPin className="w-4 h-4 shrink-0" />{lang === 'ta' ? 'முகவரிகள் & வழிகள்' : 'Addresses & directions'}

@@ -82,7 +82,7 @@ export default function InsurancePartnersSection({ onOpenConsultation }) {
               Need Instant Insurance Renewal for Your Vehicle?
             </h4>
             <p className="text-xs sm:text-sm text-slate-300 font-light">
-              Send your RC photo on WhatsApp to <strong>90878 74290</strong>. We'll send quote comparisons in 5 minutes!
+              Send your RC photo on WhatsApp to <strong>98409 14226</strong>. We'll send quote comparisons in 5 minutes!
             </p>
           </div>
 
@@ -92,7 +92,7 @@ export default function InsurancePartnersSection({ onOpenConsultation }) {
               className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-lg transition flex items-center gap-2 transform active:scale-95"
             >
               <MessageSquare className="w-4 h-4 fill-slate-950" />
-              <span>WhatsApp RC Copy (90878 74290)</span>
+              <span>WhatsApp RC Copy (98409 14226)</span>
             </button>
             <a
               href="tel:7550004226"

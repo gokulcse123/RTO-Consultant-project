@@ -30,7 +30,7 @@ Page paths, unique titles/descriptions and bilingual content are defined in `src
 
 ## Contact channels
 
-The owner confirmed **75500 04226 for phone calls** and **90878 74290 for WhatsApp Business**. All website consultation buttons open the existing customer details form. Its submit handler opens `https://wa.me/919087874290` with the completed enquiry prefilled; the customer still sends the message in WhatsApp. Call links continue to use `tel:7550004226`.
+The owner confirmed **75500 04226 for phone calls** and **98409 14226 for WhatsApp Business**. All website consultation buttons open the existing customer details form. Its submit handler opens `https://wa.me/919840914226` with the completed enquiry prefilled; the customer still sends the message in WhatsApp. Call links continue to use `tel:7550004226`.
 
 Automatic replies are a separate setting in the owner's WhatsApp Business app, not a feature activated by deploying this website. Configure **Tools → Greeting message → Send greeting message**, set recipients to **Everyone**, and save the owner's message:
 

@@ -27,11 +27,11 @@ export default function TopHelplineBar({ onOpenFaq, onOpenConsultation }) {
           <button
             type="button"
             onClick={onOpenConsultation}
-            aria-label="WhatsApp: 90878 74290"
+            aria-label="WhatsApp: 98409 14226"
             className="hidden md:flex items-center gap-1 text-slate-300 hover:text-white font-mono font-medium hover:underline text-xs"
           >
             <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-            <span>90878 74290</span>
+            <span>98409 14226</span>
           </button>
 
           <button
