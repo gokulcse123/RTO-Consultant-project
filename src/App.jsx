@@ -20,6 +20,7 @@ import ChallanModal from './components/modules/ChallanModal';
 import FaqSection from './components/modules/FaqSection';
 
 import { useLanguage } from './context/LanguageContext';
+import { googleReviewProfile } from './data/googleReviews';
 import { Phone, MessageSquare, Shield, Clock, Award, CheckCircle2 } from 'lucide-react';
 
 export default function App() {
@@ -118,17 +119,19 @@ export default function App() {
               <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">2 Branches</div>
               <div className="text-xs text-slate-500 font-semibold mt-1">Nanmangalam & Alandur</div>
             </div>
-            <div
+            <button
+              type="button"
               onClick={scrollToReviews}
               className="p-3 border-t md:border-t-0 border-l border-slate-200 cursor-pointer hover:bg-slate-50 transition group"
               title="Click to view Google Reviews"
             >
               <div className="text-2xl sm:text-3xl font-extrabold text-tn-blue flex items-center justify-center gap-1 group-hover:scale-105 transition-transform">
-                <span>4.9</span>
+                <span>{googleReviewProfile.rating}</span>
                 <span className="text-amber-400">★</span>
               </div>
-              <div className="text-xs text-slate-500 font-semibold mt-1">185+ {t('statRating')}</div>
-            </div>
+              <div className="text-xs text-slate-500 font-semibold mt-1">{googleReviewProfile.reviewCount} {t('statRating')}</div>
+              <div className="text-[10px] text-slate-400 mt-1">{lang === 'ta' ? googleReviewProfile.branchTa : googleReviewProfile.branchEn} · {lang === 'ta' ? googleReviewProfile.checkedDateTa : googleReviewProfile.checkedDateEn}</div>
+            </button>
           </div>
         </div>
 
@@ -152,7 +155,7 @@ export default function App() {
           onOpenConsultation={() => openConsultWithService('Branch Appointment')}
         />
 
-        {/* Verified Customer Google Reviews (185+ 4.9★) */}
+        {/* Dated Google rating and attributed review summaries */}
         <GoogleReviewsSection
           onOpenConsultation={(svc) => openConsultWithService(svc || 'Google Review Inquiry')}
         />

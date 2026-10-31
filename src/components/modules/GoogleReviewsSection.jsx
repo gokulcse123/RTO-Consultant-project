@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Star, CheckCircle, ExternalLink, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
-import { googleReviews } from '../../data/mockData';
+import { Star, ExternalLink, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
+import { googleReviews, googleReviewProfile } from '../../data/googleReviews';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function GoogleReviewsSection({ onOpenConsultation }) {
@@ -68,19 +68,16 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
   };
 
   const filters = [
-    { id: 'all', labelEn: 'All Reviews (185+)', labelTa: 'அனைத்து மதிப்புரைகள் (185+)' },
-    { id: 'llr', labelEn: 'LLR & DL', labelTa: 'LLR & ஓட்டுநர் உரிமம்' },
-    { id: 'rc', labelEn: 'RC & Name Transfer', labelTa: 'RC & பெயர் மாற்றம்' },
-    { id: 'otherstate', labelEn: 'Other State NOC', labelTa: 'பிற மாநில வாகனங்கள்' },
-    { id: 'insurance', labelEn: 'Motor Insurance', labelTa: 'வாகன இன்சூரன்ஸ்' },
+    { id: 'all', labelEn: `Selected reviews (${googleReviews.length})`, labelTa: `தேர்ந்தெடுத்த மதிப்புரைகள் (${googleReviews.length})` },
+    { id: 'llr', labelEn: 'Driving classes', labelTa: 'ஓட்டுநர் பயிற்சி' },
+    { id: 'rc', labelEn: 'FC renewal', labelTa: 'FC புதுப்பித்தல்' },
   ];
 
   const filteredReviews = activeFilter === 'all'
     ? googleReviews
     : googleReviews.filter(r => r.serviceCat === activeFilter);
 
-  // Direct Google Search / Google Maps Reviews URL for NTC Driving & RTO Consultant
-  const googleMapsReviewUrl = "https://www.google.com/search?q=NTC+Driving+and+RTO+Consultant+Nanmangalam+Chennai#lrd=0x0:0x0,1";
+  const googleMapsReviewUrl = googleReviewProfile.url;
 
   // Official Google G SVG
   const GoogleGLogo = () => (
@@ -118,24 +115,34 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
 
             <div>
               <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
-                <span className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">4.9</span>
-                <div className="flex items-center text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                  ))}
+                <span className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">{googleReviewProfile.rating}<span className="text-sm font-semibold text-slate-500"> / 5</span></span>
+                <div className="relative" role="img" aria-label={`${googleReviewProfile.rating} / 5`}>
+                  <div className="flex" aria-hidden="true">
+                    {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-slate-200 text-slate-200" />)}
+                  </div>
+                  <div className="absolute inset-y-0 left-0 overflow-hidden" style={{ width: `${googleReviewProfile.rating / 5 * 100}%` }} aria-hidden="true">
+                    <div className="flex w-max">
+                      {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 flex-shrink-0 fill-amber-400 text-amber-400" />)}
+                    </div>
+                  </div>
                 </div>
                 <span className="text-xs font-bold text-slate-500">
-                  (185+ {lang === 'ta' ? 'மதிப்புரைகள்' : 'Google Reviews'})
+                  ({googleReviewProfile.reviewCount} {lang === 'ta' ? 'Google மதிப்புரைகள்' : 'Google reviews'})
                 </span>
               </div>
 
               <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">
-                {lang === 'ta' ? 'வாடிக்கையாளர்களின் கூகுள் மதிப்புரைகள் (Google Reviews)' : 'Verified Customer Google Reviews'}
+                {lang === 'ta' ? 'ஆலந்தூர் கிளை — Google மதிப்புரைகள்' : 'Alandur branch — Google reviews'}
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
                 {lang === 'ta'
-                  ? 'NTC ஆட்டோ & டிரைவிங் கன்சல்டன்ட் (G. சதீஷ்) மீது சென்னை மக்களின் நன்மதிப்பு!'
-                  : 'Real feedback from satisfied clients across Nanmangalam, Chrompet, Alandur & Chennai.'}
+                  ? 'Google-ல் உள்ள மூன்று மதிப்புரைகளின் சுருக்கங்கள். அனைத்து மதிப்புரைகளையும் Google-ல் படிக்கலாம்.'
+                  : 'Summaries of three reviews on Google. Read all customer feedback on the Google listing.'}
+              </p>
+              <p className="text-[11px] text-slate-500 mt-2">
+                {lang === 'ta' ? 'சரிபார்த்த நாள்: ' : 'Last checked: '}
+                <time dateTime={googleReviewProfile.checkedAt}>{lang === 'ta' ? googleReviewProfile.checkedDateTa : googleReviewProfile.checkedDateEn}</time>
+                {lang === 'ta' ? ' · தற்போதைய rating மற்றும் எண்ணிக்கையை Google-ல் பார்க்கவும்.' : ' · See Google for the current rating and count.'}
               </p>
             </div>
           </div>
@@ -220,7 +227,7 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
               target="_blank"
               rel="noopener noreferrer"
               className="w-[90%] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)] flex-shrink-0 bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:border-blue-400"
-              title={lang === 'ta' ? 'கூகுளில் இந்த மதிப்புரையைப் பார்க்க கிளிக் செய்யவும்' : 'Click to view on Google Maps'}
+              title={lang === 'ta' ? 'Google-ல் மதிப்புரைகளைப் படிக்கவும்' : 'Read reviews on the Google listing'}
             >
               <div>
                 {/* Reviewer Header */}
@@ -235,7 +242,7 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
                       <h4 className="font-bold text-slate-900 text-sm leading-snug group-hover:text-blue-600 transition-colors">
                         {rev.name}
                       </h4>
-                      <p className="text-[11px] text-slate-400">{rev.location}</p>
+                      <p className="text-[11px] text-slate-400">{lang === 'ta' ? 'Google மதிப்புரையாளர்' : 'Google reviewer'}</p>
                     </div>
                   </div>
 
@@ -245,31 +252,29 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
                   </div>
                 </div>
 
-                {/* Rating & Verified row */}
+                {/* Rating and clear summary attribution */}
                 <div className="mt-3 flex flex-wrap gap-2 items-center justify-between">
                   <div className="flex items-center text-amber-400 gap-0.5">
                     {[...Array(rev.rating)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     ))}
-                    <span className="text-[11px] text-slate-400 ml-1.5">{rev.date}</span>
                   </div>
 
                   <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                    <CheckCircle className="w-3 h-3 text-emerald-600" />
-                    Verified
+                    {lang === 'ta' ? 'மதிப்புரைச் சுருக்கம்' : 'Review summary'}
                   </span>
                 </div>
 
                 {/* Review Body */}
                 <p className="mt-3 text-xs sm:text-[13px] text-slate-700 leading-relaxed font-normal">
-                  "{lang === 'ta' ? rev.reviewTa : rev.reviewEn}"
+                  {lang === 'ta' ? rev.reviewTa : rev.reviewEn}
                 </p>
               </div>
 
               {/* Tag & Direct Google Link */}
               <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between text-xs">
                 <span className="text-[10px] font-bold text-tn-blue bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-100">
-                  {rev.serviceTag}
+                  {lang === 'ta' ? rev.serviceTagTa : rev.serviceTagEn}
                 </span>
 
                 <span className="flex items-center gap-1 text-[11px] font-bold text-blue-600 group-hover:underline">

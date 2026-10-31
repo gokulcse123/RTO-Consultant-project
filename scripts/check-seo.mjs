@@ -1,18 +1,21 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { googleReviewProfile, googleReviews } from '../src/data/googleReviews.js';
 
 const read = (path) => readFile(new URL(path, import.meta.url), 'utf8');
 const html = await read('../dist/index.html');
 const sitemap = await read('../dist/sitemap.xml');
 const robots = await read('../dist/robots.txt');
 const languageContext = await read('../src/context/LanguageContext.jsx');
-const canonical = 'https://ntcautoconsultant.in/';
+const canonical = 'https://www.ntcautoconsultant.in/';
 const title = 'NTC Auto Consultant | RTO Services & Insurance in Chennai';
 
 assert.equal((html.match(/<title>/g) || []).length, 1, 'Expected one page title');
 assert.ok(html.includes(`<title>${title.replace('&', '&amp;')}</title>`), 'Missing search title');
 assert.ok(languageContext.includes(`document.title = "${title}"`), 'Client title must match static title');
 assert.ok(html.includes(`<link rel="canonical" href="${canonical}"`), 'Incorrect canonical URL');
+assert.ok(html.includes(`<meta property="og:url" content="${canonical}"`), 'Social URL must match the canonical destination');
+assert.ok(!html.includes('https://ntcautoconsultant.in'), 'Published links and metadata must use the www host served by production');
 assert.ok(!/name="robots"[^>]*noindex/.test(html), 'Homepage must be indexable');
 assert.ok(html.includes('<meta name="description" content="NTC Auto Consultant'), 'Missing description');
 assert.equal((html.match(/<h1\b/g) || []).length, 1, 'Expected the main service heading in static HTML');
@@ -39,10 +42,19 @@ const subBranch = businesses.find(item => item['@id'] === `${canonical}#alandur-
 assert.equal(subBranch.address.addressLocality, 'Alandur, Meenambakkam, St Thomas Mount');
 assert.equal(subBranch.address.streetAddress, '1 New Street, Alandur Commercial Building Complex, Ground Floor, near Regional Transport Office');
 assert.equal(subBranch.address.postalCode, '600016');
-assert.ok(html.includes('NTC%20Auto%20Consultant%2C%201%20New%20Street%2C%20Alandur%20Commercial%20Building%20Complex'), 'Alandur Maps link must search the supplied business address');
+assert.deepEqual(subBranch.sameAs, [googleReviewProfile.url], 'Alandur schema must identify the verified Maps listing');
+assert.ok(html.includes(`href="${googleReviewProfile.url}"`), 'Reviews and Maps buttons must link to the actual business listing');
 assert.ok(html.includes('W5QC%2BHXH'), 'Maps query must preserve the plus code');
 assert.ok(!/Puthu Street|Commercial Complex|61\/2B/.test(html), 'Outdated branch addresses must not be published');
 assert.ok(businesses.every(item => !item.aggregateRating), 'Do not add self-serving review rich-result markup');
+const visibleText = html.replace(/<[^>]*>/g, '');
+assert.ok(!/185\+|4\.9|Verified Customer Google Reviews|0x0:0x0/.test(visibleText), 'Unverified rating totals must not be published');
+assert.ok(!html.includes('0x0:0x0'), 'Placeholder review links must not be published');
+assert.ok(html.toLowerCase().includes(`datetime="${googleReviewProfile.checkedAt}"`), 'A manually checked rating must show its snapshot date');
+assert.ok(html.includes('Review summary'), 'Review paraphrases must be clearly labelled');
+for (const review of googleReviews) {
+  assert.ok(html.includes(review.name), 'Selected review must keep its Google author attribution');
+}
 
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
 assert.deepEqual(urls, [canonical], 'Sitemap should list actual pages, not section fragments');

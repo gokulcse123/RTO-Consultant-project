@@ -90,7 +90,7 @@ export const translations = {
     statYears: "12+ Years Experience",
     statClients: "15,000+ Happy Clients",
     statRtos: "All TN RTOs Covered",
-    statRating: "4.9★ Customer Trust",
+    statRating: "Google reviews",
 
     // Service Categories
     catAll: "All Services",
@@ -237,7 +237,7 @@ export const translations = {
     statYears: "12+ வருட அனுபவம்",
     statClients: "15,000+ திருப்திகர வாடிக்கையாளர்கள்",
     statRtos: "அனைத்து RTO அலுவலகங்களும்",
-    statRating: "4.9★ மக்களின் நன்மதிப்பு",
+    statRating: "Google மதிப்புரைகள்",
 
     // Service Categories
     catAll: "அனைத்து சேவைகள்",
