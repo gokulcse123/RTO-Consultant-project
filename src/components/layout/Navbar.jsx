@@ -2,29 +2,25 @@ import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
 import { Home, FileText, CheckCircle2, Award, CreditCard, MapPin, Shield, MessageCircle, Menu, X, Star } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { servicePages } from '../../data/sitePages';
 
 export default function Navbar({
   activeTab,
-  setActiveTab,
   onOpenLlr,
   onOpenStatus,
   onOpenMockTest,
   onOpenChallan,
-  onOpenConsultation,
-  onOpenBranches,
-  onScrollToInsurance,
-  onScrollToReviews
+  onOpenConsultation
 }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: t('navHome'), icon: Home, action: () => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); } },
-    { id: 'services', label: t('navServices'), icon: FileText, action: () => { setActiveTab('services'); const el = document.getElementById('services-section'); if (el) el.scrollIntoView({ behavior: 'smooth' }); } },
+    { id: 'home', label: t('navHome'), icon: Home, href: '/' },
+    { id: 'services', label: t('navServices'), icon: FileText, href: '/#services-section' },
+    ...servicePages.map(page => ({ id: page.id, label: page.label[lang], href: page.path, icon: page.id === 'branches' ? MapPin : page.id === 'insurance' ? Shield : page.id === 'contact' ? MessageCircle : FileText })),
     { id: 'llr', label: t('navLlrApply'), icon: FileText, action: onOpenLlr, highlight: true },
-    { id: 'insurance', label: t('navInsurance'), icon: Shield, action: onScrollToInsurance },
-    { id: 'branches', label: t('navBranches'), icon: MapPin, action: onOpenBranches },
-    { id: 'reviews', label: t('navReviews'), icon: Star, action: onScrollToReviews },
+    { id: 'reviews', label: t('navReviews'), icon: Star, href: '/#reviews-section' },
     { id: 'status', label: t('navStatus'), icon: CheckCircle2, action: onOpenStatus },
     { id: 'mockTest', label: t('navMockTest'), icon: Award, action: onOpenMockTest },
     { id: 'challan', label: t('navChallan'), icon: CreditCard, action: onOpenChallan },
@@ -34,7 +30,7 @@ export default function Navbar({
   const handleItemClick = (item) => {
     // Collapse the drawer before calculating a section's scroll position.
     flushSync(() => setMobileMenuOpen(false));
-    item.action();
+    item.action?.();
   };
 
   return (
@@ -45,10 +41,13 @@ export default function Navbar({
           <div className="hidden xl:flex min-w-0 flex-1 flex-wrap items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
+              const Item = item.href ? 'a' : 'button';
               const isActive = activeTab === item.id;
               return (
-                <button
+                <Item
                   key={item.id}
+                  href={item.href}
+                  aria-current={isActive ? 'page' : undefined}
                   onClick={() => handleItemClick(item)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition ${
                     item.whatsapp
@@ -62,7 +61,7 @@ export default function Navbar({
                 >
                   <Icon className="w-3.5 h-3.5" />
                   <span>{item.label}</span>
-                </button>
+                </Item>
               );
             })}
           </div>
@@ -97,9 +96,12 @@ export default function Navbar({
         <div id="mobile-navigation" className="xl:hidden bg-slate-900 border-t border-slate-800 px-4 pt-2 pb-4 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
+            const Item = item.href ? 'a' : 'button';
             return (
-              <button
+              <Item
                 key={item.id}
+                href={item.href}
+                aria-current={activeTab === item.id ? 'page' : undefined}
                 onClick={() => handleItemClick(item)}
                 className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-xs font-semibold ${
                   item.whatsapp
@@ -111,7 +113,7 @@ export default function Navbar({
               >
                 <Icon className="w-4 h-4" />
                 <span>{item.label}</span>
-              </button>
+              </Item>
             );
           })}
         </div>

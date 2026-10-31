@@ -7,8 +7,8 @@ import './index.css';
 const root = document.getElementById('root');
 const app = (
   <React.StrictMode>
-    <LanguageProvider>
-      <App />
+    <LanguageProvider pathname={window.location.pathname}>
+      <App pathname={window.location.pathname} />
     </LanguageProvider>
   </React.StrictMode>
 );

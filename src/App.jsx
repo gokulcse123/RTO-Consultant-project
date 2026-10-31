@@ -18,14 +18,16 @@ import StatusTrackerModal from './components/modules/StatusTrackerModal';
 import MockTestModal from './components/modules/MockTestModal';
 import ChallanModal from './components/modules/ChallanModal';
 import FaqSection from './components/modules/FaqSection';
+import ServicePage from './components/modules/ServicePage';
+import { getPage } from './data/sitePages';
 
 import { useLanguage } from './context/LanguageContext';
 import { googleReviewProfile } from './data/googleReviews';
 import { Phone, MessageSquare, Shield, Clock, Award, CheckCircle2 } from 'lucide-react';
 
-export default function App() {
+export default function App({ pathname = '/' }) {
   const { t, lang } = useLanguage();
-  const [activeTab, setActiveTab] = useState('home');
+  const page = getPage(pathname);
 
   // Modal open states
   const [llrOpen, setLlrOpen] = useState(false);
@@ -41,21 +43,25 @@ export default function App() {
   };
 
   const scrollToBranches = () => {
+    if (page?.id !== 'home') { window.location.assign('/branches/'); return; }
     const el = document.getElementById('branches-section');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToInsurance = () => {
+    if (page?.id !== 'home') { window.location.assign('/motor-insurance/'); return; }
     const el = document.getElementById('insurance-section');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToFaq = () => {
+    if (page?.id !== 'home') { window.location.assign('/#faq-section'); return; }
     const el = document.getElementById('faq-section');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToReviews = () => {
+    if (page?.id !== 'home') { window.location.assign('/#reviews-section'); return; }
     const el = document.getElementById('reviews-section');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
@@ -77,16 +83,12 @@ export default function App() {
 
       {/* 3. Navigation Bar */}
       <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        activeTab={page?.id}
         onOpenLlr={() => setLlrOpen(true)}
         onOpenStatus={() => setStatusOpen(true)}
         onOpenMockTest={() => setMockTestOpen(true)}
         onOpenChallan={() => setChallanOpen(true)}
         onOpenConsultation={() => openConsultWithService('Direct WhatsApp')}
-        onOpenBranches={scrollToBranches}
-        onScrollToInsurance={scrollToInsurance}
-        onScrollToReviews={scrollToReviews}
       />
 
       {/* 4. Live News Marquee Ticker */}
@@ -94,6 +96,14 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1">
+        {!page ? (
+          <section className="max-w-7xl mx-auto px-4 py-16">
+            <h1 className="text-3xl font-bold">{lang === 'ta' ? 'பக்கம் கிடைக்கவில்லை' : 'Page not found'}</h1>
+            <a href="/" className="inline-block mt-6 text-tn-blue underline">{lang === 'ta' ? 'முகப்பிற்குச் செல்ல' : 'Return to the NTC homepage'}</a>
+          </section>
+        ) : page.id !== 'home' ? (
+          <ServicePage page={page} onOpenConsultation={() => openConsultWithService(page.label.en)} />
+        ) : <>
         {/* Hero Banner with NTC Visiting Card details & CTAs */}
         <HeroBanner
           onOpenLlr={() => setLlrOpen(true)}
@@ -196,6 +206,7 @@ export default function App() {
 
         {/* FAQs Section */}
         <FaqSection />
+        </>}
       </main>
 
       {/* Footer with both branches and G. Sathish contact info */}

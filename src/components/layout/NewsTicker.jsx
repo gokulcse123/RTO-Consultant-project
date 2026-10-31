@@ -7,7 +7,7 @@ export default function NewsTicker() {
   const tickerItems = t('tickerItems') || [];
 
   return (
-    <div className="bg-amber-500 text-slate-950 border-b border-amber-600 overflow-hidden flex items-stretch text-xs font-medium select-none shadow-sm">
+    <div data-nosnippet="" className="bg-amber-500 text-slate-950 border-b border-amber-600 overflow-hidden flex items-stretch text-xs font-medium select-none shadow-sm">
       {/* Label Badge */}
       <div className="bg-slate-900 text-amber-300 font-bold px-3 py-1.5 flex items-center gap-1.5 z-10 flex-shrink-0 shadow-md">
         <Bell className="w-3.5 h-3.5 animate-bounce" />

@@ -1,11 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations } from '../data/translations';
+import { getPage, getPageTitle } from '../data/sitePages';
 
 const LanguageContext = createContext();
 
-export function LanguageProvider({ children }) {
+export function LanguageProvider({ children, pathname = '/' }) {
   const [lang, setLang] = useState('en'); // 'en' or 'ta'
   const [fontScale, setFontScale] = useState(1); // 0.9, 1, 1.1
+
+  // Restore only after hydration so the initial client HTML matches the English build.
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem('ntc-language') === 'ta') setLang('ta');
+    } catch { /* Language switching still works when storage is unavailable. */ }
+  }, []);
 
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontScale * 100}%`;
@@ -14,15 +22,15 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    if (lang === 'ta') {
-      document.title = "NTC ஆட்டோ கன்சல்டன்ட் | சென்னை RTO சேவைகள் & இன்சூரன்ஸ்";
-    } else {
-      document.title = "NTC Auto Consultant | RTO Services & Insurance in Chennai";
-    }
-  }, [lang]);
+    document.title = getPageTitle(getPage(pathname), lang);
+  }, [lang, pathname]);
 
   const toggleLanguage = () => {
-    setLang((prev) => (prev === 'en' ? 'ta' : 'en'));
+    const next = lang === 'en' ? 'ta' : 'en';
+    setLang(next);
+    try {
+      sessionStorage.setItem('ntc-language', next);
+    } catch { /* Keep the selected language for this page when storage is unavailable. */ }
   };
 
   const setScale = (scale) => {

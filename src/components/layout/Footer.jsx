@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShieldCheck, PhoneCall, MessageCircle, MapPin, Mail, ExternalLink, Heart } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { servicePages } from '../../data/sitePages';
 
 export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpenChallan, onOpenConsultation, onOpenBranches }) {
   const { t, lang } = useLanguage();
@@ -8,6 +9,10 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
   return (
     <footer className="bg-slate-950 text-slate-300 pt-14 pb-8 border-t-4 border-amber-500 mt-16">
       <div className="max-w-7xl mx-auto px-4">
+        <nav aria-label={lang === 'ta' ? 'சேவைப் பக்கங்கள்' : 'Service pages'} className="flex flex-wrap gap-x-6 gap-y-3 pb-8 mb-8 border-b border-slate-800 text-sm font-semibold">
+          <a href="/" className="hover:text-amber-300">{t('navHome')}</a>
+          {servicePages.map(page => <a key={page.id} href={page.path} className="hover:text-amber-300">{page.label[lang]}</a>)}
+        </nav>
         {/* Main Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
           

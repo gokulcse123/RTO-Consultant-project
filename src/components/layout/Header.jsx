@@ -11,7 +11,7 @@ export default function Header({ onOpenLlr, onOpenConsultation, onOpenBranches }
         {/* Left: NTC Brand Logo & Authority details */}
         <div className="flex items-center gap-2.5 sm:gap-4 min-w-0 flex-1">
           {/* Logo Badge */}
-          <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-white shadow-md border border-slate-200 ring-2 ring-amber-100 overflow-hidden p-1">
+          <a href="/" aria-label="NTC Auto Consultant home" className="flex-shrink-0 flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-white shadow-md border border-slate-200 ring-2 ring-amber-100 overflow-hidden p-1">
             <img
               src="/ntc.webp"
               alt="NTC Auto Consultant logo"
@@ -19,7 +19,7 @@ export default function Header({ onOpenLlr, onOpenConsultation, onOpenBranches }
               height="64"
               className="w-full h-full object-contain"
             />
-          </div>
+          </a>
 
           <div className="min-w-0 flex-1 leading-tight">
             {/* Top Tagline from card */}
