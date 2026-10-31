@@ -30,12 +30,14 @@
   background: #94a3b8;
 }
 
-/* Keep reviews swipeable without displaying the horizontal scrollbar. */
-#reviews-track {
+/* Keep reviews and category filters swipeable without a visible scrollbar. */
+#reviews-track,
+.scrollbar-none {
   scrollbar-width: none;
 }
 
-#reviews-track::-webkit-scrollbar {
+#reviews-track::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
   display: none;
 }
 
