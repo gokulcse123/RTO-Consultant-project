@@ -136,8 +136,8 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
                 {lang === 'ta'
-                  ? 'Google-ல் உள்ள மூன்று மதிப்புரைகளின் சுருக்கங்கள். அனைத்து மதிப்புரைகளையும் Google-ல் படிக்கலாம்.'
-                  : 'Summaries of three reviews on Google. Read all customer feedback on the Google listing.'}
+                  ? `Google-ல் உள்ள ${googleReviews.length} மதிப்புரைகளின் சுருக்கங்கள். அனைத்து மதிப்புரைகளையும் Google-ல் படிக்கலாம்.`
+                  : `Summaries of ${googleReviews.length} reviews on Google. Read all customer feedback on the Google listing.`}
               </p>
               <p className="text-[11px] text-slate-500 mt-2">
                 {lang === 'ta' ? 'சரிபார்த்த நாள்: ' : 'Last checked: '}
