@@ -36,8 +36,10 @@ const headOffice = businesses.find(item => item['@id'] === `${canonical}#busines
 assert.equal(headOffice.address.streetAddress, 'Bran Tea, Chromepet Road, Nanmangalam');
 assert.equal(headOffice.address.postalCode, '600129');
 const subBranch = businesses.find(item => item['@id'] === `${canonical}#alandur-business`);
-assert.equal(subBranch.address.addressLocality, 'Alandur, Chennai');
-assert.ok(!subBranch.address.streetAddress && !subBranch.address.postalCode, 'Do not invent an exact Alandur address');
+assert.equal(subBranch.address.addressLocality, 'Alandur, Meenambakkam, St Thomas Mount');
+assert.equal(subBranch.address.streetAddress, '1 New Street, Alandur Commercial Building Complex, Ground Floor, near Regional Transport Office');
+assert.equal(subBranch.address.postalCode, '600016');
+assert.ok(html.includes('NTC%20Auto%20Consultant%2C%201%20New%20Street%2C%20Alandur%20Commercial%20Building%20Complex'), 'Alandur Maps link must search the supplied business address');
 assert.ok(html.includes('W5QC%2BHXH'), 'Maps query must preserve the plus code');
 assert.ok(!/Puthu Street|Commercial Complex|61\/2B/.test(html), 'Outdated branch addresses must not be published');
 assert.ok(businesses.every(item => !item.aggregateRating), 'Do not add self-serving review rich-result markup');

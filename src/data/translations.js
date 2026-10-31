@@ -58,7 +58,7 @@ export const translations = {
       "NTC Consultant: New LLR & Driving Licences processed online without hassle. Call 75500 04226.",
       "Vehicle RC Transfer, Address Change & Hypothecation Cancellation (HP Cancel) done fast.",
       "Instant 2-Wheeler & 4-Wheeler Insurance Renewal with Top Insurers: Digit, Shriram, New India, HDFC ERGO.",
-      "Head office: Bran Tea, Chromepet Road, Nanmangalam. Sub-branch: Alandur RTO office area. Call for directions.",
+      "Head office: Bran Tea, Chromepet Road, Nanmangalam. Sub-branch: 1 New Street, Alandur Commercial Building Complex, Ground Floor, near Regional Transport Office.",
       "e-Challan payment & Fitness Certificate (FC) / Permit services done with lowest service charges.",
     ],
 
@@ -205,7 +205,7 @@ export const translations = {
       "NTC கன்சல்டன்ட்: புதிய LLR & ஓட்டுநர் உரிமம் நேரில் அலையாமல் விரைவாகப் பெறலாம். தொடர்பு: 75500 04226.",
       "வாகன RC பெயர் மாற்றம் (உரிமையாளர் மாற்றம்), முகவரி மாற்றம் & வங்கி HP கேன்சல் செய்து தரப்படும்.",
       "இருசக்கர மற்றும் நான்கு சக்கர வாகனங்களுக்கான இன்சூரன்ஸ் உடனடி பாலிசி: Digit, Shriram, New India, HDFC ERGO.",
-      "தலைமை அலுவலகம்: Bran Tea, குரோம்பேட்டை சாலை, நன்மங்கலம். துணைக் கிளை: ஆலந்தூர் RTO அலுவலகப் பகுதி. வழியறிய அழைக்கவும்.",
+      "தலைமை அலுவலகம்: Bran Tea, குரோம்பேட்டை சாலை, நன்மங்கலம். துணைக் கிளை: 1 நியூ ஸ்ட்ரீட், ஆலந்தூர் கமர்ஷியல் பில்டிங் காம்ப்ளெக்ஸ், தரைத் தளம், வட்டாரப் போக்குவரத்து அலுவலகம் அருகில்.",
       "போக்குவரத்து e-சலான் அபராதம் செலுத்துதல், வாகன தகுதிச் சான்றிதழ் (FC) & பெர்மிட் மிகக் குறைந்த கட்டணத்தில்.",
     ],
 

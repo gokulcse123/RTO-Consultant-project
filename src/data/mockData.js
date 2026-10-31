@@ -69,13 +69,13 @@ export const ntcBranches = [
     id: "alandur",
     titleEn: "Alandur Sub-branch",
     titleTa: "ஆலந்தூர் துணைக் கிளை",
-    addressEn: "Alandur RTO office area, Chennai",
-    addressTa: "ஆலந்தூர் RTO அலுவலகப் பகுதி, சென்னை",
-    landmarkEn: "Alandur RTO office area",
-    landmarkTa: "ஆலந்தூர் RTO அலுவலகப் பகுதி",
+    addressEn: "1 New Street, Alandur Commercial Building Complex, Ground Floor, Alandur, near Regional Transport Office, Meenambakkam, St Thomas Mount, Tamil Nadu 600016",
+    addressTa: "1 நியூ ஸ்ட்ரீட், ஆலந்தூர் கமர்ஷியல் பில்டிங் காம்ப்ளெக்ஸ், தரைத் தளம், ஆலந்தூர், வட்டாரப் போக்குவரத்து அலுவலகம் அருகில், மீனம்பாக்கம், செயின்ட் தாமஸ் மவுண்ட், தமிழ்நாடு 600016",
+    landmarkEn: "Near Regional Transport Office, Ground Floor",
+    landmarkTa: "வட்டாரப் போக்குவரத்து அலுவலகம் அருகில், தரைத் தளம்",
     phone1: "75500 04226",
     whatsapp: "7550004226",
-    mapQuery: null,
+    mapQuery: "NTC Auto Consultant, 1 New Street, Alandur Commercial Building Complex, Ground Floor, Alandur, near Regional Transport Office, Meenambakkam, St Thomas Mount, Tamil Nadu 600016",
     isHeadOffice: false
   }
 ];

@@ -33,7 +33,7 @@ English is the default crawlable version. The Tamil switch uses the same URL; it
 
 The owner supplied the head-office location as **Bran Tea, Chromepet Road, Nanmangalam, Tamil Nadu 600129**, with plus code **W5QC+HXH**. The head-office Maps button searches that location; it is not an NTC Google Business Profile link. The business name remains NTC Auto Consultant.
 
-The sub-branch is described as the **Alandur RTO office area, Chennai**. Its exact street address and map pin have not been supplied. Show a call-for-directions link and locality-only structured address until confirmed; do not use the government RTO office as the NTC branch's exact pin. The previous Puthu Street / Commercial Complex address has been removed.
+The owner supplied the Alandur sub-branch address in a Google Maps screenshot: **1 New Street, Alandur Commercial Building Complex, Ground Floor, Alandur, near Regional Transport Office, Meenambakkam, St Thomas Mount, Tamil Nadu 600016**. The branch Maps button searches the business name and full supplied address. This is an address-search link, not a verified Google Place ID or coordinates; do not substitute the government RTO office's pin. The address is shared by the branch card, hero, footer and translations, and mirrored in the structured data in `index.html`.
 
 Visible branch details and consultation options use `ntcBranches` in `src/data/mockData.js`; keep the structured data in `index.html` aligned when updating them.
 
