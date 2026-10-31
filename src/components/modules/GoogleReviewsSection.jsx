@@ -21,7 +21,6 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
     let frameId;
     let lastTime = null;
     let distance = 0;
-    let direction = 1;
     let pixelsPerMillisecond = 0;
 
     const updateScrollSpeed = () => {
@@ -40,16 +39,14 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
       const maxScroll = track.scrollWidth - track.clientWidth;
 
       if (!reducedMotion.matches && !document.hidden && !pause.hovered &&
-          !pause.focused && !pause.touching && time >= pause.until && maxScroll > 1) {
-        // Move one card every five seconds, reversing at either end.
-        if (track.scrollLeft >= maxScroll - 1) direction = -1;
-        else if (track.scrollLeft <= 0) direction = 1;
-
+          !pause.focused && !pause.touching && time >= pause.until &&
+          maxScroll > 1 && track.scrollLeft < maxScroll - 1) {
+        // Move forward one card every five seconds, stopping at the last card.
         // Accumulate fractional pixels for consistent speed across refresh rates.
         distance += elapsed * pixelsPerMillisecond;
         const pixels = Math.floor(distance);
         if (pixels > 0) {
-          track.scrollBy({ left: direction * pixels, behavior: 'instant' });
+          track.scrollBy({ left: pixels, behavior: 'instant' });
           distance -= pixels;
         }
       } else {
@@ -183,7 +180,7 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
           ))}
         </div>
 
-        {/* Continuous scrolling; pause while reading or interacting. */}
+        {/* Scroll forward to the last card; pause while reading or interacting. */}
         <div
           id="reviews-track"
           ref={reviewsRef}
