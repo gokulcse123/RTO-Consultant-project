@@ -28,6 +28,16 @@ Vercel is configured to use this build and output directory, with trailing slash
 
 Page paths, unique titles/descriptions and bilingual content are defined in `src/data/sitePages.js`. Header navigation, footer links, related-page links and the generated sitemap share these paths. `scripts/prerender.mjs` updates the HTML metadata and adds a matching WebPage, breadcrumb and (for service pages) Service entity. The base business/WebSite schema remains in `index.html`. No manual sitemap file needs updating.
 
+## Contact channels
+
+The owner confirmed **75500 04226 for phone calls** and **90878 74290 for WhatsApp Business**. All website consultation buttons open the existing customer details form. Its submit handler opens `https://wa.me/919087874290` with the completed enquiry prefilled; the customer still sends the message in WhatsApp. Call links continue to use `tel:7550004226`.
+
+Automatic replies are a separate setting in the owner's WhatsApp Business app, not a feature activated by deploying this website. Configure **Tools → Greeting message → Send greeting message**, set recipients to **Everyone**, and save the owner's message:
+
+> வணக்கம்! NTC Auto Consultant-ஐ தொடர்பு கொண்டதற்கு நன்றி. உங்கள் விண்ணப்ப விவரங்கள் எங்களுக்கு கிடைத்துவிட்டன. எங்கள் கன்சல்டன்ட் G. Sathish அவர்கள் உங்களை சில நிமிடங்களில் தொடர்பு கொள்வார்.
+
+Greeting messages apply to first-time messages or a conversation resumed after 14 days of inactivity, subject to WhatsApp's recipient and connectivity requirements. See the [official greeting-message instructions](https://faq.whatsapp.com/501866148528310/?cms_platform=android). Confirm that the owner has enabled the setting before treating auto-replies as active.
+
 ## Search targets
 
 These are suggested queries based on the services and locations shown on the site, not measured search volumes or confirmed rankings.

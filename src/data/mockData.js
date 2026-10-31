@@ -63,7 +63,7 @@ export const ntcBranches = [
     landmarkTa: "Bran Tea இடம் · பிளஸ் குறியீடு: W5QC+HXH",
     phone1: "75500 04226",
     phone2: "90878 74290",
-    whatsapp: "7550004226",
+    whatsapp: "9087874290",
     mapQuery: "Bran Tea, W5QC+HXH, Chromepet Road, Nanmangalam, Tamil Nadu 600129",
     isHeadOffice: true
   },
@@ -77,7 +77,7 @@ export const ntcBranches = [
     landmarkEn: "Near Regional Transport Office, Ground Floor",
     landmarkTa: "வட்டாரப் போக்குவரத்து அலுவலகம் அருகில், தரைத் தளம்",
     phone1: "75500 04226",
-    whatsapp: "7550004226",
+    whatsapp: "9087874290",
     mapQuery: "NTC Auto Consultant, 1 New Street, Alandur Commercial Building Complex, Ground Floor, Alandur, near Regional Transport Office, Meenambakkam, St Thomas Mount, Tamil Nadu 600016",
     isHeadOffice: false
   }

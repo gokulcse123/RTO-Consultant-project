@@ -72,7 +72,7 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
     const fullMessage = messageLines.join("\n");
 
     // encodeURIComponent encodes '&', spaces, newlines, and all special chars safely
-    const whatsappUrl = `https://wa.me/917550004226?text=${encodeURIComponent(fullMessage)}`;
+    const whatsappUrl = `https://wa.me/919087874290?text=${encodeURIComponent(fullMessage)}`;
     window.open(whatsappUrl, '_blank');
     
     // Clear all form inputs so next time the user opens Get Quote, it is empty and fresh
@@ -99,7 +99,7 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
               <div className="font-bold text-slate-900 text-sm">G. Sathish (Proprietor)</div>
               <div className="text-[11px] text-emerald-800 font-semibold flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Available on WhatsApp: 75500 04226
+                Available on WhatsApp: 90878 74290
               </div>
             </div>
           </div>
@@ -224,10 +224,6 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
           <div className="flex items-center gap-3">
             <a href="tel:7550004226" className="font-bold text-slate-900 hover:text-emerald-700 underline font-mono">
               75500 04226
-            </a>
-            <span>•</span>
-            <a href="tel:9087874290" className="font-bold text-slate-900 hover:text-emerald-700 underline font-mono">
-              90878 74290
             </a>
           </div>
         </div>

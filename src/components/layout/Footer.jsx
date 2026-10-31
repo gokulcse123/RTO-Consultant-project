@@ -126,21 +126,22 @@ export default function Footer({ onOpenLlr, onOpenStatus, onOpenMockTest, onOpen
               >
                 <PhoneCall className="w-4 h-4 text-amber-400 flex-shrink-0" />
                 <div>
-                  <div className="text-[10px] text-slate-400">Primary Contact / WhatsApp</div>
+                  <div className="text-[10px] text-slate-400">{lang === 'ta' ? 'அழைக்க' : 'Call'}</div>
                   <div className="font-bold text-white font-mono text-sm">75500 04226</div>
                 </div>
               </a>
 
-              <a
-                href="tel:9087874290"
-                className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition"
+              <button
+                type="button"
+                onClick={onOpenConsultation}
+                className="w-full text-left flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition"
               >
-                <PhoneCall className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <div>
-                  <div className="text-[10px] text-slate-400">Secondary Mobile</div>
+                  <div className="text-[10px] text-slate-400">WhatsApp Business</div>
                   <div className="font-bold text-white font-mono text-sm">90878 74290</div>
                 </div>
-              </a>
+              </button>
 
               <button
                 onClick={onOpenConsultation}

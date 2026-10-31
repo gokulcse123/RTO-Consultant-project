@@ -190,7 +190,7 @@ export default function App({ pathname = '/' }) {
                   className="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-lg transition transform active:scale-95 flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4 fill-white" />
-                  <span>WhatsApp: 75500 04226</span>
+                  <span>WhatsApp: 90878 74290</span>
                 </button>
                 <a
                   href="tel:7550004226"

@@ -24,13 +24,15 @@ export default function TopHelplineBar({ onOpenFaq, onOpenConsultation }) {
             <span>75500 04226</span>
           </a>
 
-          <a
-            href="tel:9087874290"
+          <button
+            type="button"
+            onClick={onOpenConsultation}
+            aria-label="WhatsApp: 90878 74290"
             className="hidden md:flex items-center gap-1 text-slate-300 hover:text-white font-mono font-medium hover:underline text-xs"
           >
-            <Phone className="w-3.5 h-3.5 text-slate-400" />
+            <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
             <span>90878 74290</span>
-          </a>
+          </button>
 
           <button
             onClick={onOpenConsultation}

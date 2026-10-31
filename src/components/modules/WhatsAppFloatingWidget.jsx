@@ -6,8 +6,6 @@ export default function WhatsAppFloatingWidget({ onOpenConsultation }) {
   const { t } = useLanguage();
   const [showTooltip, setShowTooltip] = useState(true);
 
-  const directWhatsAppLink = "https://wa.me/917550004226?text=Hi%20NTC%20Consultant,%20I%20need%20assistance%20with%20RTO%20Services%20/%20Insurance.";
-
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end">
       {/* Tooltip Pop */}
