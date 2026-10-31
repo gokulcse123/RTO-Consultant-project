@@ -26,7 +26,16 @@ export default function ServiceCard({
 
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-label={title}
       onClick={onClick}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick();
+        }
+      }}
       className="group relative bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 hover:border-tn-blue"
     >
       <div>

@@ -159,9 +159,9 @@ export default function App() {
 
         {/* Feature Spotlight: Fast & Reliable with Lowest Fee */}
         <section className="py-12 px-4 max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-950 text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden border border-slate-800">
-            <div className="relative z-10 max-w-3xl space-y-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/20 px-3 py-1 rounded-full border border-amber-300/30">
+          <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-950 text-white rounded-3xl p-6 sm:p-8 lg:p-12 shadow-xl relative overflow-hidden border border-slate-800">
+            <div className="relative z-10 w-full space-y-4">
+              <span className="inline-block max-w-full text-xs leading-relaxed font-bold uppercase tracking-widest text-amber-400 bg-amber-400/20 px-3 py-1 rounded-2xl border border-amber-300/30">
                 {t('tagline')}
               </span>
               <h2 className="text-2xl sm:text-3xl font-black">
@@ -171,17 +171,17 @@ export default function App() {
                 From new LLR applications and driving test slot booking to complex RC ownership name transfers and instant commercial vehicle insurance, <strong>G. Sathish (Proprietor)</strong> ensures error-free filing and door-step document pickup.
               </p>
 
-              <div className="pt-4 flex flex-wrap gap-3">
+              <div className="pt-4 flex flex-col sm:flex-row sm:flex-wrap gap-3">
                 <button
                   onClick={() => openConsultWithService('Immediate Documentation Help')}
-                  className="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-lg transition transform active:scale-95 flex items-center gap-2"
+                  className="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-lg transition transform active:scale-95 flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4 fill-white" />
                   <span>WhatsApp: 75500 04226</span>
                 </button>
                 <a
                   href="tel:7550004226"
-                  className="px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/20 transition flex items-center gap-2"
+                  className="px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/20 transition flex items-center justify-center gap-2"
                 >
                   <Phone className="w-4 h-4 text-amber-400" />
                   <span>Call 75500 04226</span>

@@ -111,13 +111,16 @@ export default function MockTestModal({ isOpen, onClose }) {
                   }
 
                   return (
-                    <div
+                    <button
+                      type="button"
                       key={optIdx}
+                      aria-pressed={isSelected}
+                      aria-disabled={hasAnswered}
                       onClick={() => !hasAnswered && handleSelectOption(optIdx)}
-                      className={`p-3.5 border rounded-xl text-xs sm:text-sm font-medium transition cursor-pointer flex items-center justify-between ${optClass}`}
+                      className={`w-full text-left p-3.5 border rounded-xl text-xs sm:text-sm font-medium transition cursor-pointer flex items-center justify-between gap-2 ${optClass}`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center font-bold text-xs bg-slate-50">
+                        <span className="w-6 h-6 shrink-0 rounded-full border border-slate-300 flex items-center justify-center font-bold text-xs bg-slate-50">
                           {String.fromCharCode(65 + optIdx)}
                         </span>
                         <span>{optionText}</span>
@@ -129,7 +132,7 @@ export default function MockTestModal({ isOpen, onClose }) {
                       {hasAnswered && isSelected && !isCorrect && (
                         <XCircle className="w-5 h-5 text-rose-600 flex-shrink-0" />
                       )}
-                    </div>
+                    </button>
                   );
                 })}
               </div>

@@ -41,10 +41,12 @@ export default function HeroBanner({
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-950 via-tn-navy to-slate-900 text-white overflow-hidden py-8 sm:py-14 px-3 sm:px-4 border-b border-slate-800">
+    <section className="relative bg-gradient-to-br from-slate-950 via-tn-navy to-slate-900 text-white py-8 sm:py-14 px-3 sm:px-4 border-b border-slate-800">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
+      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -89,7 +91,7 @@ export default function HeroBanner({
             </div>
 
             {/* Primary Action Buttons: WhatsApp & Call */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
               {/* WhatsApp Direct */}
               <button
                 onClick={onOpenConsultation}
@@ -140,14 +142,15 @@ export default function HeroBanner({
                     Suggested Services
                   </div>
                   {searchResults.map((item, idx) => (
-                    <div
+                    <button
+                      type="button"
                       key={idx}
                       onClick={() => {
                         item.action();
                         setSearchQuery('');
                         setSearchResults([]);
                       }}
-                      className="px-4 py-3 hover:bg-amber-50 cursor-pointer flex items-center justify-between border-b border-slate-100 last:border-0 transition"
+                      className="w-full text-left px-4 py-3 hover:bg-amber-50 cursor-pointer flex items-center justify-between gap-2 border-b border-slate-100 last:border-0 transition"
                     >
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">
@@ -158,7 +161,7 @@ export default function HeroBanner({
                         </span>
                       </div>
                       <ArrowRight className="w-4 h-4 text-slate-400" />
-                    </div>
+                    </button>
                   ))}
                 </div>
               )}

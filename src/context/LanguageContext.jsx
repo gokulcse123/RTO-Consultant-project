@@ -8,6 +8,11 @@ export function LanguageProvider({ children }) {
   const [fontScale, setFontScale] = useState(1); // 0.9, 1, 1.1
 
   useEffect(() => {
+    document.documentElement.style.fontSize = `${fontScale * 100}%`;
+    return () => { document.documentElement.style.fontSize = ''; };
+  }, [fontScale]);
+
+  useEffect(() => {
     document.documentElement.lang = lang;
     if (lang === 'ta') {
       document.title = "NTC ஆட்டோ கன்சல்டன்ட் | சென்னை RTO சேவைகள் & இன்சூரன்ஸ்";
@@ -31,7 +36,7 @@ export function LanguageProvider({ children }) {
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, toggleLanguage, fontScale, setScale, t }}>
-      <div style={{ fontSize: `${fontScale * 100}%` }}>
+      <div>
         {children}
       </div>
     </LanguageContext.Provider>

@@ -196,7 +196,7 @@ export default function ServicesGrid({
             badgeColor={service.badgeColor}
             accentColor={service.accentColor}
             actionText={service.actionText}
-            onClick={service.action}
+            onClick={() => service.action(service.title)}
           />
         ))}
       </div>

@@ -12,7 +12,7 @@ export default function WhatsAppFloatingWidget({ onOpenConsultation }) {
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end">
       {/* Tooltip Pop */}
       {showTooltip && (
-        <div className="relative mb-2 bg-white text-slate-900 border border-slate-200 px-3.5 py-2 rounded-2xl shadow-xl flex items-center gap-2 text-xs max-w-xs animate-bounce">
+        <div className="relative mb-2 bg-white text-slate-900 border border-slate-200 px-3.5 py-2 rounded-2xl shadow-xl hidden sm:flex items-center gap-2 text-xs max-w-xs motion-safe:animate-bounce">
           <div className="flex-1">
             <span className="font-bold text-emerald-700 block">Chat with G. Sathish</span>
             <span className="text-[11px] text-slate-500">Fast RTO & Insurance Support</span>
@@ -46,7 +46,7 @@ export default function WhatsAppFloatingWidget({ onOpenConsultation }) {
           aria-label="Chat on WhatsApp"
         >
           {/* Ping ripple effect */}
-          <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping -z-10" />
+          <span className="absolute inline-flex h-9 w-9 rounded-full bg-emerald-400 opacity-75 motion-safe:animate-ping -z-10" />
 
           {/* WhatsApp SVG / Lucide Icon */}
           <MessageCircle className="w-8 h-8 fill-white" />

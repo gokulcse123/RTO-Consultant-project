@@ -46,7 +46,7 @@ export default function ChallanModal({ isOpen, onClose }) {
             <label className="block text-xs font-semibold text-slate-700 mb-1">
               {t('enterVehicleNo')}
             </label>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="text"
                 value={vehicleNo}
@@ -57,7 +57,7 @@ export default function ChallanModal({ isOpen, onClose }) {
               />
               <button
                 type="submit"
-                className="px-5 py-2 bg-tn-blue hover:bg-tn-darkBlue text-white font-bold text-xs rounded-lg shadow-sm transition flex items-center gap-1.5 whitespace-nowrap"
+                className="px-5 py-2 bg-tn-blue hover:bg-tn-darkBlue text-white font-bold text-xs rounded-lg shadow-sm transition flex items-center justify-center gap-1.5 whitespace-nowrap"
               >
                 <Search className="w-3.5 h-3.5" />
                 <span>{t('searchChallanBtn')}</span>

@@ -90,9 +90,9 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
     >
       <form onSubmit={handleWhatsAppSend} className="space-y-4 text-xs">
         {/* Banner with Proprietor Info */}
-        <div className="bg-gradient-to-r from-emerald-500/10 via-emerald-600/15 to-emerald-700/10 border border-emerald-500/30 p-3.5 rounded-2xl flex items-center justify-between">
+        <div className="bg-gradient-to-r from-emerald-500/10 via-emerald-600/15 to-emerald-700/10 border border-emerald-500/30 p-3.5 rounded-2xl flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+            <div className="w-10 h-10 shrink-0 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
               💬
             </div>
             <div>
@@ -219,7 +219,7 @@ export default function QuickConsultationModal({ isOpen, onClose, preselectedSer
         </button>
 
         {/* Alternate Calling Options */}
-        <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+        <div className="pt-2 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between text-[11px] text-slate-500">
           <span>Or call directly:</span>
           <div className="flex items-center gap-3">
             <a href="tel:7550004226" className="font-bold text-slate-900 hover:text-emerald-700 underline font-mono">

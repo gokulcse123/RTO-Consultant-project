@@ -54,7 +54,7 @@ export default function Header({ onOpenLlr, onOpenConsultation, onOpenBranches }
           {/* Direct WhatsApp CTA */}
           <button
             onClick={onOpenConsultation}
-            className="hidden md:flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-md transition transform active:scale-95"
+            className="hidden xl:flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-md transition transform active:scale-95"
             title="Chat on WhatsApp: 75500 04226"
           >
             <MessageSquare className="w-3.5 h-3.5 fill-white" />

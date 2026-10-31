@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { flushSync } from 'react-dom';
 import { Home, FileText, CheckCircle2, Award, CreditCard, MapPin, Shield, MessageCircle, Menu, X, Star } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -31,16 +32,17 @@ export default function Navbar({
   ];
 
   const handleItemClick = (item) => {
+    // Collapse the drawer before calculating a section's scroll position.
+    flushSync(() => setMobileMenuOpen(false));
     item.action();
-    setMobileMenuOpen(false);
   };
 
   return (
     <nav className="bg-slate-900 text-white shadow-md relative z-20 border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-12">
+        <div className="flex flex-wrap items-center justify-between gap-2 min-h-12 py-1.5">
           {/* Desktop Nav links */}
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <div className="hidden xl:flex min-w-0 flex-1 flex-wrap items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -66,13 +68,13 @@ export default function Navbar({
           </div>
 
           {/* Quick Contact badge on right */}
-          <div className="hidden lg:flex items-center text-xs text-amber-300 font-medium bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">
+          <div className="hidden 2xl:flex shrink-0 items-center text-xs text-amber-300 font-medium bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse mr-2" />
             <span>Chennai: Nanmangalam & Alandur</span>
           </div>
 
           {/* Mobile hamburger button */}
-          <div className="flex md:hidden items-center justify-between w-full min-w-0">
+          <div className="flex xl:hidden items-center justify-between w-full min-w-0">
             <span className="text-xs font-bold text-amber-300 flex items-center gap-1.5 min-w-0 truncate pr-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
               <span className="truncate">NTC RTO & Driving Consultant</span>
@@ -81,6 +83,8 @@ export default function Navbar({
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-slate-200 hover:bg-slate-800 flex-shrink-0"
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -90,7 +94,7 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-800 px-4 pt-2 pb-4 space-y-1">
+        <div id="mobile-navigation" className="xl:hidden bg-slate-900 border-t border-slate-800 px-4 pt-2 pb-4 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (

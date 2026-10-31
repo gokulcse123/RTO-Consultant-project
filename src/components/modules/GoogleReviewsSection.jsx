@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Star, CheckCircle, ExternalLink, MessageCircle, Phone, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
+import { Star, CheckCircle, ExternalLink, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import { googleReviews } from '../../data/mockData';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -8,33 +8,11 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const reviewsRef = useRef(null);
   const autoScrollPause = useRef({ hovered: false, focused: false, touching: false, until: 0 });
-  const [scrollState, setScrollState] = useState({ previous: false, next: false });
 
   useEffect(() => {
     const track = reviewsRef.current;
     track.scrollTo({ left: 0, behavior: 'instant' });
 
-    const updateScrollState = () => {
-      const nextState = {
-        previous: track.scrollLeft > 1,
-        next: track.scrollLeft + track.clientWidth < track.scrollWidth - 1,
-      };
-      setScrollState(previous =>
-        previous.previous === nextState.previous && previous.next === nextState.next
-          ? previous
-          : nextState
-      );
-    };
-
-    updateScrollState();
-    track.addEventListener('scroll', updateScrollState, { passive: true });
-    const observer = new ResizeObserver(updateScrollState);
-    observer.observe(track);
-
-    return () => {
-      track.removeEventListener('scroll', updateScrollState);
-      observer.disconnect();
-    };
   }, [activeFilter, lang]);
 
   useEffect(() => {
@@ -44,6 +22,16 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
     let lastTime = null;
     let distance = 0;
     let direction = 1;
+    let pixelsPerMillisecond = 0;
+
+    const updateScrollSpeed = () => {
+      const card = track.firstElementChild;
+      const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+      pixelsPerMillisecond = card ? (card.getBoundingClientRect().width + gap) / 5000 : 0;
+    };
+    updateScrollSpeed();
+    const observer = new ResizeObserver(updateScrollSpeed);
+    observer.observe(track);
 
     const animate = (time) => {
       const elapsed = lastTime === null ? 0 : Math.min(time - lastTime, 50);
@@ -53,12 +41,12 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
 
       if (!reducedMotion.matches && !document.hidden && !pause.hovered &&
           !pause.focused && !pause.touching && time >= pause.until && maxScroll > 1) {
-        // Move slowly in both directions so every review remains reachable.
+        // Move one card every five seconds, reversing at either end.
         if (track.scrollLeft >= maxScroll - 1) direction = -1;
         else if (track.scrollLeft <= 0) direction = 1;
 
         // Accumulate fractional pixels for consistent speed across refresh rates.
-        distance += elapsed * 24 / 1000;
+        distance += elapsed * pixelsPerMillisecond;
         const pixels = Math.floor(distance);
         if (pixels > 0) {
           track.scrollBy({ left: direction * pixels, behavior: 'instant' });
@@ -72,24 +60,14 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
     };
 
     frameId = window.requestAnimationFrame(animate);
-    return () => window.cancelAnimationFrame(frameId);
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      observer.disconnect();
+    };
   }, [activeFilter, lang]);
 
   const pauseAfterInteraction = () => {
     autoScrollPause.current.until = performance.now() + 2500;
-  };
-
-  const scrollReviews = (direction) => {
-    const track = reviewsRef.current;
-    const card = track.firstElementChild;
-    if (!card) return;
-
-    pauseAfterInteraction();
-    const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
-    track.scrollBy({
-      left: direction * (card.getBoundingClientRect().width + gap),
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
-    });
   };
 
   const filters = [
@@ -205,36 +183,7 @@ export default function GoogleReviewsSection({ onOpenConsultation }) {
           ))}
         </div>
 
-        {/* Horizontal review navigation */}
-        <div className="flex items-center justify-between gap-4 mb-3">
-          <p className="text-xs text-slate-500">
-            {lang === 'ta' ? 'மதிப்புரைகள் தானாக நகரும் • படிக்க மவுஸ் கர்சரை மேலே வைக்கவும்' : 'Reviews scroll automatically • Hover to pause and read'}
-          </p>
-          <div className="flex gap-2 flex-shrink-0">
-            <button
-              type="button"
-              onClick={() => scrollReviews(-1)}
-              disabled={!scrollState.previous}
-              aria-label={lang === 'ta' ? 'முந்தைய மதிப்புரைகள்' : 'Previous reviews'}
-              aria-controls="reviews-track"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollReviews(1)}
-              disabled={!scrollState.next}
-              aria-label={lang === 'ta' ? 'அடுத்த மதிப்புரைகள்' : 'Next reviews'}
-              aria-controls="reviews-track"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-
-        {/* Continuous slow scrolling; pause while reading or interacting. */}
+        {/* Continuous scrolling; pause while reading or interacting. */}
         <div
           id="reviews-track"
           ref={reviewsRef}
